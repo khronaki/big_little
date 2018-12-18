@@ -1,0 +1,271 @@
+\begin{thebibliography}{10}
+
+\bibitem{Dup09}
+A.~Agarwal and P.~Kumar.
+\newblock {Economical Duplication Based Task Scheduling for Heterogeneous and
+  Homogeneous Computing Systems}.
+\newblock In {\em IACC}, 2009.
+
+\bibitem{EAS}
+M.~Anderson.
+\newblock {Scheduler Options in big.LITTLE Android Platforms}.
+\newblock
+  \url{http://events.linuxfoundation.org/sites/events/files/slides/GTS_Anderson.pdf},
+  2015.
+
+\bibitem{TRM_A15}
+ARM.
+\newblock Cortex-{A15} technical reference manual, revision: r2p0, 2011.
+
+\bibitem{TRM_A7}
+ARM.
+\newblock Cortex-{A7 MPCore}, revision: r0p3, 2011.
+
+\bibitem{CCI}
+{ARM Ltd.}
+\newblock {CoreLink Interconnect}.
+\newblock \url{http://www.arm.com/products/system-ip/interconnect}, Last
+  accessed Nov 22, 2015.
+
+\bibitem{Ayguade:TPDS2009}
+E.~Ayguad{\'e}, N.~Copty, A.~Duran, J.~Hoeflinger, Y.~Lin, F.~Massaioli,
+  X.~Teruel, P.~Unnikrishnan, and G.~Zhang.
+\newblock The design of {OpenMP} tasks.
+\newblock {\em IEEE Trans. Parallel Distrib. Syst.}, 20(3):404--418, 2009.
+
+\bibitem{Balakrishnan:ISCA2005}
+S.~Balakrishnan, R.~Rajwar, M.~Upton, and K.~K. Lai.
+\newblock The impact of performance asymmetry in emerging multicore
+  architectures.
+\newblock In {\em ISCA}, pages 506--517, 2005.
+
+\bibitem{Bauer.2012.SC}
+M.~Bauer, S.~Treichler, E.~Slaughter, and A.~Aiken.
+\newblock Legion: Expressing locality and independence with logical regions.
+\newblock In {\em SC}, pages 66:1--66:11, 2012.
+
+\bibitem{Bienia:PhD2011}
+C.~Bienia.
+\newblock {\em Benchmarking Modern Multiprocessors}.
+\newblock PhD thesis, Princeton University, January 2011.
+
+\bibitem{MPR_A57}
+J.~Bolaria.
+\newblock Cortex-{A57} extends {ARM}'s reach, 2012.
+
+\bibitem{Chasapis:TACO2016}
+D.~Chasapis, M.~Casas, M.~Moreto, R.~Vidal, E.~Ayguade, J.~Labarta, and
+  M.~Valero.
+\newblock {PARSECSs: Evaluating the Impact of Task Parallelism in the PARSEC
+  Benchmark Suite}.
+\newblock {\em Trans. Archit. Code Optim.}, 2015.
+
+\bibitem{quickIA}
+N.~Chitlur, G.~Srinivasa, S.~Hahn, P.~Gupta, D.~Reddy, D.~Koufaty, P.~Brett,
+  A.~Prabhakaran, L.~Zhao, N.~Ijih, S.~Subhaschandra, S.~Grover, X.~Jiang, and
+  R.~Iyer.
+\newblock Quickia: Exploring heterogeneous architectures on real prototypes.
+\newblock In {\em HPCA}, pages 1--8, 2012.
+
+\bibitem{Chronaki:ICS2015}
+K.~Chronaki, A.~Rico, R.~M. Badia, E.~Ayguad{\'{e}}, J.~Labarta, and M.~Valero.
+\newblock Criticality-aware dynamic task scheduling for heterogeneous
+  architectures.
+\newblock In {\em ICS}, pages 329--338, 2015.
+
+\bibitem{samsung}
+H.~Chung, M.~Kang, and H.-D. Cho.
+\newblock {Heterogeneous Multi-Processing Solution of Exynos 5 Octa with ARM
+  big.LITTLE Technology}.
+\newblock Technical report, {Samsung Electronics Co., Ltd.}, {2013}.
+
+\bibitem{Cong_quickIA}
+J.~Cong and B.~Yuan.
+\newblock Energy-efficient scheduling on heterogeneous multi-core
+  architectures.
+\newblock In {\em ISLPED}, pages 345--350, 2012.
+
+\bibitem{LDCP}
+M.~Daoud and N.~Kharma.
+\newblock {Efficient Compile-Time Task Scheduling for Heterogeneous Distributed
+  Computing Systems}.
+\newblock In {\em ICPADS}, 2006.
+
+\bibitem{MPR_A72}
+M.~Demler.
+\newblock Cortex-{A72} takes big step forward, 2015.
+
+\bibitem{OmpSs_PPL11}
+A.~Duran, E.~Ayguad\'{e}, R.~M. Badia, J.~Labarta, L.~Martinell, X.~Martorell,
+  and J.~Planas.
+\newblock {Ompss: a Proposal for Programming Heterogeneous Multi-Core
+  Architectures.}
+\newblock {\em Parallel Processing Letters}, 21, 2011.
+
+\bibitem{Fedorova2009}
+A.~Fedorova, J.~C. Saez, D.~Shelepov, and M.~Prieto.
+\newblock {Maximizing Power Efficiency with Asymmetric Multicore Systems}.
+\newblock {\em Communications of the ACM}, 52(12), 2009.
+
+\bibitem{Greenhalgh2011}
+P.~Greenhalgh.
+\newblock {big.LITTLE Processing with ARM Cortex-A15 \& Cortex-A7}.
+\newblock {\em ARM White Paper}, 2011.
+
+\bibitem{BG-Q:HotChips2011}
+R.~Haring.
+\newblock {The Blue Gene/Q Compute Chip}.
+\newblock {\em HotChips}, 2011.
+
+\bibitem{EAS_Linux}
+{Ian Rickards and Amit Kucheria}.
+\newblock {Energy Aware Scheduling (EAS) progress update}.
+\newblock
+  \url{https://www.linaro.org/blog/core-dump/energy-aware-scheduling-eas-progress-update},
+  2015.
+
+\bibitem{Hetero95}
+M.~A. Iverson, F.~\"{O}zg\"{u}ner, and G.~J. Follen.
+\newblock {Parallelizing Existing Applications in a Distributed Heterogeneous
+  Environment}.
+\newblock In {\em HCW}, 1995.
+
+\bibitem{ARM}
+B.~Jeff.
+\newblock {big.LITTLE Technology Moves Towards Fully Heterogeneous Global Task
+  Scheduling}.
+\newblock {\em ARM White Paper}, 2013.
+
+\bibitem{Joao:ASPLOS2012}
+J.~A. Joao, M.~A. Suleman, O.~Mutlu, and Y.~N. Patt.
+\newblock Bottleneck identification and scheduling in multithreaded
+  applications.
+\newblock In {\em ASPLOS}, pages 223--234, 2012.
+
+\bibitem{Joao:ISCA2013}
+J.~A. Joao, M.~A. Suleman, O.~Mutlu, and Y.~N. Patt.
+\newblock Utility-based acceleration of multithreaded applications on
+  asymmetric {CMPs}.
+\newblock In {\em ISCA}, pages 154--165, 2013.
+
+\bibitem{Kogge_Exascale_TR08}
+P.~Kogge, K.~Bergman, S.~Borkar, D.~Campbell, W.~Carson, W.~Dally, M.~Denneau,
+  P.~Franzon, W.~Harrod, K.~Hill, and Others.
+\newblock {Exascale Computing Study: Technology Challenges in Achieving
+  Exascale Systems}.
+\newblock Technical report, University of Notre Dame, CSE Dept., 2008.
+
+\bibitem{Koufaty_bias}
+D.~Koufaty, D.~Reddy, and S.~Hahn.
+\newblock Bias scheduling in heterogeneous multi-core architectures.
+\newblock In {\em EuroSys}, pages 125--138, 2010.
+
+\bibitem{MPR_A53}
+K.~Krewell.
+\newblock Cortex-{A53 is ARM}'s next little thing, 2012.
+
+\bibitem{Kumar_micro_2003}
+R.~Kumar, K.~I. Farkas, N.~P. Jouppi, P.~Ranganathan, and D.~M. Tullsen.
+\newblock Single-isa heterogeneous multi-core architectures: The potential for
+  processor power reduction.
+\newblock In {\em MICRO}, pages 81--92, 2003.
+
+\bibitem{Kumar:ISCA2004}
+R.~Kumar, D.~M. Tullsen, P.~Ranganathan, N.~P. Jouppi, and K.~I. Farkas.
+\newblock Single-isa heterogeneous multi-core architectures for multithreaded
+  workload performance.
+\newblock In {\em ISCA}, pages 64--75, 2004.
+
+\bibitem{IKS}
+{Mathieu Poirier}.
+\newblock {In Kernel Switcher: A solution to support ARM's new big.LITTLE
+  technology}.
+\newblock {Embedded Linux Conference 2013}, 2013.
+
+\bibitem{Morad_area_based}
+T.~Y. Morad, U.~C. Weiser, A.~Kolodny, M.~Valero, and E.~Ayguade.
+\newblock Performance, power efficiency and scalability of asymmetric cluster
+  chip multiprocessors.
+\newblock {\em IEEE Comput. Archit. Lett.}, 5(1):4--17, Jan. 2006.
+
+\bibitem{OpenMP4.0:Manual2013}
+{OpenMP} architecture review board: Application program interface, 2013.
+
+\bibitem{ARM4HPC_SC13}
+N.~Rajovic, P.~M. Carpenter, I.~Gelado, N.~Puzovic, A.~Ramirez, and M.~Valero.
+\newblock {Supercomputing with Commodity CPUs: Are Mobile SoCs Ready for HPC?}
+\newblock In {\em SC}, 2013.
+
+\bibitem{Rodrigues_thread_scheduling}
+R.~Rodrigues, A.~Annamalai, I.~Koren, and S.~Kundu.
+\newblock Scalable thread scheduling in asymmetric multicores for power
+  efficiency.
+\newblock In {\em SBAC-PAD}, pages 59--66, 2012.
+
+\bibitem{Hetero93}
+G.~Sih and E.~Lee.
+\newblock {A Compile-Time Scheduling Heuristic for Interconnection-Constrained
+  Heterogeneous Processor Architectures}.
+\newblock {\em IEEE Trans. Parallel Distrib. Syst.}, 4(2), 1993.
+
+\bibitem{Suleman:APLOS2009}
+M.~A. Suleman, O.~Mutlu, M.~K. Qureshi, and Y.~N. Patt.
+\newblock Accelerating critical section execution with asymmetric multi-core
+  architectures.
+\newblock In {\em ASPLOS}, pages 253--264, 2009.
+
+\bibitem{clusterss}
+E.~Tejedor, M.~Farreras, D.~Grove, R.~M. Badia, G.~Almasi, and J.~Labarta.
+\newblock Clusterss: A task-based programming model for clusters.
+\newblock In {\em Proceedings of the 20th International Symposium on High
+  Performance Distributed Computing}, HPDC '11, pages 267--268, 2011.
+
+\bibitem{clusterss_cpe}
+E.~Tejedor, M.~Farreras, D.~Grove, R.~M. Badia, G.~Almasi, and J.~Labarta.
+\newblock A high-productivity task-based programming model for clusters.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  24(18):2421--2448, 2012.
+
+\bibitem{HEFT}
+H.~Topcuoglu, S.~Hariri, and M.-Y. Wu.
+\newblock {Performance-Effective and Low-Complexity Task Scheduling for
+  Heterogeneous Computing}.
+\newblock {\em IEEE Trans. Parallel Distrib. Syst.}, 13(3), 2002.
+
+\bibitem{MPR_A15}
+J.~Turley.
+\newblock Cortex-{A15} eagle flies the coop, 2011.
+
+\bibitem{VanCraeynest_fairness}
+K.~Van~Craeynest, S.~Akram, W.~Heirman, A.~Jaleel, and L.~Eeckhout.
+\newblock {Fairness-aware Scheduling on single-ISA Heterogeneous Multi-cores}.
+\newblock In {\em PACT}, 2013.
+
+\bibitem{VanCraeynest_PIE}
+K.~Van~Craeynest, A.~Jaleel, L.~Eeckhout, P.~Narvaez, and J.~Emer.
+\newblock Scheduling heterogeneous multi-cores through performance impact
+  estimation (pie).
+\newblock In {\em ISCA}, pages 213--224, 2012.
+
+\bibitem{Vandierendonck:Hyperq}
+H.~Vandierendonck, K.~Chronaki, and D.~S. Nikolopoulos.
+\newblock Deterministic scale-free pipeline parallelism with hyperqueues.
+\newblock In {\em SC}, pages 32:1--32:12, 2013.
+
+\bibitem{Vandierendonck:PACT2011}
+H.~Vandierendonck, G.~Tzenakis, and D.~S. Nikolopoulos.
+\newblock A unified scheduler for recursive and task dataflow parallelism.
+\newblock In {\em PACT}, pages 1--11, 2011.
+
+\bibitem{Fujitsu:HotChips2014}
+T.~Yoshida.
+\newblock {SPARC64 XIfx: Fujitsu's Next Generation Processor for HPC}.
+\newblock {\em HotChips}, 2014.
+
+\bibitem{Zuckerman:EXADAPT2011}
+S.~Zuckerman, J.~Suetterlein, R.~Knauerhase, and G.~R. Gao.
+\newblock Using a {``Codelet''} program execution model for exascale machines:
+  Position paper.
+\newblock In {\em EXADAPT}, pages 64--69, 2011.
+
+\end{thebibliography}

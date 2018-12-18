@@ -1,0 +1,161 @@
+\relax 
+\citation{Kogge_Exascale_TR08}
+\citation{CompCores,hetServers}
+\citation{Kumar:ISCA2004,Balakrishnan:ISCA2005,Pangaea}
+\citation{ARMV8}
+\citation{Suleman:APLOS2009,Fedorova2009,Greenhalgh2011,Joao:ASPLOS2012,Joao:ISCA2013,ARM4HPC_SC13}
+\citation{PARSEC3}
+\citation{Ayguade:TPDS2009,OpenMP4.0:Manual2013,OmpSs_PPL11,vectorMulticore,Bauer.2012.SC,rollback,Vandierendonck:PACT2011,Vandierendonck:Hyperq,spawn}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
+\newlabel{sec:intro}{{I}{1}}
+\citation{samsung,Greenhalgh2011}
+\citation{MPR_A53}
+\citation{MPR_A57,MPR_A72}
+\citation{CoreLink}
+\citation{Juno}
+\citation{TRM_A7}
+\citation{MPR_A15}
+\citation{TRM_A15}
+\citation{TRM_A15}
+\citation{coolingAware}
+\citation{samsung}
+\@writefile{toc}{\contentsline {section}{\numberline {II}The ARM big.LITTLE Architecture}{2}}
+\newlabel{sec:background}{{II}{2}}
+\newlabel{sec:suitability}{{II}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Samsung Exynos 5422 processor with ARM big.LITTLE architecture.}}{2}}
+\newlabel{fig:big-little-diagram}{{1}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Scheduling in Asymmetric Multi-Cores}{2}}
+\newlabel{sec:scheduling}{{III}{2}}
+\citation{IKS}
+\citation{samsung}
+\citation{samsung}
+\citation{OpenMP4.0:Manual2013,OmpSs_PPL11,Zuckerman:EXADAPT2011,Bauer.2012.SC,Vandierendonck:PACT2011}
+\citation{OpenMP4.0:Manual2013,OmpSs_PPL11,Zuckerman:EXADAPT2011,Bauer.2012.SC,Vandierendonck:PACT2011,Vandierendonck:Hyperq}
+\citation{OpenMP4.0:Manual2013}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Cluster Switching and In-Kernel Switch}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Global Task Scheduling}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Dynamic Scheduling in the Runtime}{3}}
+\newlabel{sec:runtime}{{\unhbox \voidb@x \hbox {III-C}}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Methodology}{3}}
+\newlabel{sec:experimental}{{IV}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Metrics}{3}}
+\newlabel{sec:metrics}{{\unhbox \voidb@x \hbox {IV-A}}{3}}
+\newlabel{eq.speedup}{{1}{3}}
+\citation{PARSEC3,Bienia:PhD2011}
+\citation{Chasapis:TACO2016}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Benchmarks used from the PARSEC benchmark suite and their measured performance ratio between big and little cores}}{4}}
+\newlabel{tab:parsec}{{I}{4}}
+\newlabel{eq.energy}{{2}{4}}
+\newlabel{eq.edp}{{3}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Applications}{4}}
+\newlabel{sec:parsec}{{\unhbox \voidb@x \hbox {IV-B}}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Ideal speedup over 1 little core according to Equation\nobreakspace  {}4\hbox {}. Numbers at the bottom of x axis show the total number of cores, numbers above it show the number of big cores}}{4}}
+\newlabel{fig:ideal}{{2}{4}}
+\citation{Bienia:PhD2011}
+\citation{samsung,ARM}
+\citation{Chasapis:TACO2016}
+\citation{Greenhalgh2011}
+\newlabel{eq.ideal}{{4}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{5}}
+\newlabel{sec:evaluation}{{V}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Exploiting Parallelism in AMCs}{5}}
+\newlabel{sec:eval:A}{{\unhbox \voidb@x \hbox {V-A}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Execution time speedup over 1 little core for systems that consist of 4 cores in total with 0, 2 and 4 big cores. Different schedulers at the application (\textit  {static threading}), OS (\textit  {GTS}) and runtime (\textit  {task-based}) levels are considered.}}{6}}
+\newlabel{fig:speedup4}{{3}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average power measurements on a 4-core system with 0, 2, and 4 big cores.}}{6}}
+\newlabel{fig:power4}{{4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Normalized energy consumption and average EDP on a 4-core system with 0, 2, and 4 big cores. Static threading on 4 little cores is the baseline in both cases. }}{6}}
+\newlabel{fig:energy4}{{5}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Adding Little Cores to an SMC}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Average results when running on 4 to 8 cores with 4 of them big. Speedup is over 1 little core. Static threading on 4 little cores is the baseline of energy consumption and EDP}}{7}}
+\newlabel{fig:averages4plus}{{6}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Speedup over 1 little core when running on 4 to 8 cores and 4 of them are big}}{7}}
+\newlabel{fig:speedup4plus}{{7}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Average power when running on 4 to 8 cores and 4 of them are big}}{7}}
+\newlabel{fig:power4plus}{{8}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Programming Models for AMCs}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Speedup over 1 little core when running on 4 to 8 cores and 4 of them are big. Four different programming models are considered: Static threading using \texttt  {pthreads}, parallel loops with static scheduling (loop static), parallel loops with dynamic scheduling (loop dynamic), and a task-based solution with dynamic scheduling (task-based).}}{8}}
+\newlabel{fig:prog_models}{{9}{8}}
+\citation{Kumar_micro_2003}
+\citation{Kumar:ISCA2004}
+\citation{Balakrishnan:ISCA2005,Morad_area_based}
+\citation{Suleman:APLOS2009}
+\citation{Joao:ASPLOS2012,Joao:ISCA2013}
+\citation{Koufaty_bias}
+\citation{Cong_quickIA}
+\citation{quickIA}
+\citation{VanCraeynest_fairness}
+\citation{VanCraeynest_PIE}
+\citation{Rodrigues_thread_scheduling}
+\citation{EAS,EAS_Linux}
+\citation{Hetero95}
+\citation{Hetero93}
+\citation{Dup09}
+\citation{Chronaki:ICS2015}
+\citation{HEFT}
+\citation{LDCP}
+\citation{Kumar_micro_2003,Morad_area_based,Balakrishnan:ISCA2005,Koufaty_bias,VanCraeynest_fairness,VanCraeynest_PIE,Rodrigues_thread_scheduling,Hetero93,Hetero95,Dup09,Suleman:APLOS2009,Joao:ASPLOS2012,Joao:ISCA2013}
+\citation{Hetero93,HEFT,LDCP}
+\citation{Kumar:ISCA2004,VanCraeynest_fairness,VanCraeynest_PIE,Hetero95,Chronaki:ICS2015}
+\citation{Cong_quickIA}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Related Work}{9}}
+\newlabel{sec:related}{{VI}{9}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusions}{9}}
+\newlabel{sec:conclusions}{{VII}{9}}
+\bibstyle{abbrv}
+\bibdata{references}
+\bibcite{Dup09}{1}
+\bibcite{EAS}{2}
+\bibcite{TRM_A15}{3}
+\bibcite{TRM_A7}{4}
+\bibcite{CoreLink}{5}
+\bibcite{Juno}{6}
+\bibcite{Ayguade:TPDS2009}{7}
+\bibcite{Balakrishnan:ISCA2005}{8}
+\bibcite{Bauer.2012.SC}{9}
+\bibcite{Bienia:PhD2011}{10}
+\bibcite{MPR_A57}{11}
+\bibcite{coolingAware}{12}
+\bibcite{Chasapis:TACO2016}{13}
+\bibcite{quickIA}{14}
+\bibcite{Chronaki:ICS2015}{15}
+\bibcite{samsung}{16}
+\bibcite{Cong_quickIA}{17}
+\bibcite{LDCP}{18}
+\bibcite{MPR_A72}{19}
+\bibcite{rollback}{20}
+\bibcite{OmpSs_PPL11}{21}
+\bibcite{Fedorova2009}{22}
+\bibcite{Greenhalgh2011}{23}
+\bibcite{EAS_Linux}{24}
+\bibcite{Hetero95}{25}
+\bibcite{ARM}{26}
+\bibcite{Joao:ASPLOS2012}{27}
+\bibcite{Joao:ISCA2013}{28}
+\bibcite{Kogge_Exascale_TR08}{29}
+\bibcite{Koufaty_bias}{30}
+\bibcite{MPR_A53}{31}
+\bibcite{Kumar_micro_2003}{32}
+\bibcite{Kumar:ISCA2004}{33}
+\bibcite{ARMV8}{34}
+\bibcite{CompCores}{35}
+\bibcite{IKS}{36}
+\bibcite{Morad_area_based}{37}
+\bibcite{OpenMP4.0:Manual2013}{38}
+\bibcite{ARM4HPC_SC13}{39}
+\bibcite{vectorMulticore}{40}
+\bibcite{Rodrigues_thread_scheduling}{41}
+\bibcite{Hetero93}{42}
+\bibcite{Suleman:APLOS2009}{43}
+\bibcite{spawn}{44}
+\bibcite{HEFT}{45}
+\bibcite{MPR_A15}{46}
+\bibcite{VanCraeynest_fairness}{47}
+\bibcite{VanCraeynest_PIE}{48}
+\bibcite{Vandierendonck:Hyperq}{49}
+\bibcite{Vandierendonck:PACT2011}{50}
+\bibcite{Pangaea}{51}
+\bibcite{hetServers}{52}
+\bibcite{PARSEC3}{53}
+\bibcite{Zuckerman:EXADAPT2011}{54}
+\@writefile{toc}{\contentsline {section}{References}{10}}

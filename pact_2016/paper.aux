@@ -1,0 +1,160 @@
+\relax 
+\citation{Kogge_Exascale_TR08}
+\citation{Kumar:ISCA2004,Balakrishnan:ISCA2005}
+\citation{ARM}
+\citation{samsung}
+\citation{Suleman:APLOS2009,Fedorova2009,Greenhalgh2011,Joao:ASPLOS2012,Joao:ISCA2013}
+\citation{ARM4HPC_SC13}
+\citation{Ayguade:TPDS2009,OpenMP4.0:Manual2013,OmpSs_PPL11,Zuckerman:EXADAPT2011,Bauer.2012.SC,Vandierendonck:PACT2011,Vandierendonck:Hyperq}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
+\newlabel{sec:intro}{{I}{1}}
+\citation{BG-Q:HotChips2011,Fujitsu:HotChips2014}
+\citation{samsung,Greenhalgh2011}
+\citation{MPR_A53}
+\citation{MPR_A57,MPR_A72}
+\citation{CCI}
+\citation{Juno}
+\citation{TRM_A7}
+\@writefile{toc}{\contentsline {section}{\numberline {II}The ARM big.LITTLE Architecture}{2}}
+\newlabel{sec:background}{{II}{2}}
+\newlabel{sec:suitability}{{II}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The Samsung Exynos 5422 processor implementing the ARM big.LITTLE architecture.}}{2}}
+\newlabel{fig:big-little-diagram}{{1}{2}}
+\citation{MPR_A15}
+\citation{TRM_A15}
+\citation{TRM_A15}
+\citation{samsung}
+\citation{IKS}
+\citation{samsung}
+\citation{samsung}
+\citation{EAS,EAS_Linux}
+\citation{OpenMP4.0:Manual2013,OmpSs_PPL11,Zuckerman:EXADAPT2011,Bauer.2012.SC,Vandierendonck:PACT2011}
+\citation{OpenMP4.0:Manual2013,OmpSs_PPL11,Zuckerman:EXADAPT2011,Bauer.2012.SC,Vandierendonck:PACT2011,Vandierendonck:Hyperq}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Scheduling in Asymmetric Multi-Cores}{3}}
+\newlabel{sec:scheduling}{{III}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Cluster Switching}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}In-Kernel Switch}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-C}}Global Task Scheduling}{3}}
+\citation{OmpSs_PPL11}
+\citation{OpenMP4.0:Manual2013}
+\citation{Bienia:PhD2011}
+\citation{Bienia:PhD2011}
+\citation{Chasapis:TACO2016}
+\citation{Chasapis:TACO2016}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-D}}Dynamic Scheduling at the Runtime System Level}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Methodology}{4}}
+\newlabel{sec:experimental}{{IV}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Metrics}{4}}
+\newlabel{sec:metrics}{{\unhbox \voidb@x \hbox {IV-A}}{4}}
+\newlabel{eq.speedup}{{1}{4}}
+\newlabel{eq.energy}{{2}{4}}
+\newlabel{eq.edp}{{3}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Applications}{4}}
+\newlabel{sec:parsec}{{\unhbox \voidb@x \hbox {IV-B}}{4}}
+\citation{Bienia:PhD2011}
+\citation{samsung,ARM}
+\citation{Chasapis:TACO2016}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Evaluated benchmarks from the PARSEC benchmark suite}}{5}}
+\newlabel{tab:parsec}{{I}{5}}
+\newlabel{eq.ideal}{{4}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Ideal speedup over 1 little core according to Equation\nobreakspace  {}4\hbox {}. Numbers at the bottom of x axis show the total number of cores, numbers above it show the number of big cores}}{5}}
+\newlabel{fig:ideal}{{2}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Evaluation}{5}}
+\newlabel{sec:evaluation}{{V}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-A}}Exploiting Parallelism in Asymmetric Multi-Cores}{5}}
+\citation{Greenhalgh2011}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Execution time speedup over 1 little core for systems that consist of 4 cores in total with 0, 2 and 4 big cores.}}{6}}
+\newlabel{fig:speedup4}{{3}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average power measurements on a 4-core system with 0, 2, and 4 big cores.}}{6}}
+\newlabel{fig:power4}{{4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Normalized energy consumption and average EDP on a 4-core system with 0, 2, and 4 big cores. Static threading with 4 little cores is used as baseline in both cases. }}{6}}
+\newlabel{fig:energy4}{{5}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-B}}Adding Little Cores to a Symmetric Multi-core}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Average results when running on 4 to 8 cores with 4 of them big. Speedup is over 1 little core, static threading on 4 little cores is the baseline of energy consumption and EDP}}{8}}
+\newlabel{fig:averages4plus}{{6}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Speedup over 1 little core when running on 4 to 8 cores and 4 of them are big}}{8}}
+\newlabel{fig:speedup4plus}{{7}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Average power when running on 4 to 8 cores and 4 of them are big}}{8}}
+\newlabel{fig:power4plus}{{8}{8}}
+\citation{BG-Q:HotChips2011,Fujitsu:HotChips2014}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Power consumption of the Streamcluster benchmark on the 8-core Octodroid Platform. Left: Consumption of the 4 big cores. Right: Consumption of the whole chip.}}{9}}
+\newlabel{fig:streamcluster_consumption_evolution}{{9}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-C}}Power Consumption Analysis over Time}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {V-D}}Exploiting Assistant Cores for Runtime Activity}{9}}
+\citation{Kumar_micro_2003}
+\citation{Kumar:ISCA2004}
+\citation{Balakrishnan:ISCA2005,Morad_area_based}
+\citation{Suleman:APLOS2009}
+\citation{Joao:ASPLOS2012,Joao:ISCA2013}
+\citation{Koufaty_bias}
+\citation{Cong_quickIA}
+\citation{quickIA}
+\citation{VanCraeynest_fairness}
+\citation{VanCraeynest_PIE}
+\citation{Rodrigues_thread_scheduling}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Speedup obtained from the three different scenarios of the main thread's execution. Bottom line numbers show the total number of cores and upper line numbers show the number of big cores.}}{10}}
+\newlabel{fig:speedup-def-big-little}{{10}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Related Work}{10}}
+\newlabel{sec:related}{{VI}{10}}
+\citation{Hetero95}
+\citation{Hetero93}
+\citation{Dup09}
+\citation{Chronaki:ICS2015}
+\citation{HEFT}
+\citation{LDCP}
+\citation{Kumar_micro_2003,Kumar:ISCA2004,Morad_area_based,Balakrishnan:ISCA2005,Koufaty_bias,VanCraeynest_fairness,VanCraeynest_PIE,Rodrigues_thread_scheduling,Hetero93,Hetero95,Dup09,Suleman:APLOS2009,Joao:ASPLOS2012,Joao:ISCA2013}
+\citation{Hetero93,Chronaki:ICS2015,HEFT,LDCP}
+\citation{Kumar:ISCA2004,VanCraeynest_fairness,VanCraeynest_PIE,Hetero93,Hetero95,Chronaki:ICS2015}
+\citation{Cong_quickIA}
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{Kogge_Exascale_TR08}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusions}{11}}
+\newlabel{sec:conclusions}{{VII}{11}}
+\bibcite{Kumar:ISCA2004}{2}
+\bibcite{Balakrishnan:ISCA2005}{3}
+\bibcite{ARM}{4}
+\bibcite{samsung}{5}
+\bibcite{Suleman:APLOS2009}{6}
+\bibcite{Fedorova2009}{7}
+\bibcite{Greenhalgh2011}{8}
+\bibcite{Joao:ASPLOS2012}{9}
+\bibcite{Joao:ISCA2013}{10}
+\bibcite{ARM4HPC_SC13}{11}
+\bibcite{Ayguade:TPDS2009}{12}
+\bibcite{OpenMP4.0:Manual2013}{13}
+\bibcite{OmpSs_PPL11}{14}
+\bibcite{Zuckerman:EXADAPT2011}{15}
+\bibcite{Bauer.2012.SC}{16}
+\bibcite{Vandierendonck:PACT2011}{17}
+\bibcite{Vandierendonck:Hyperq}{18}
+\bibcite{BG-Q:HotChips2011}{19}
+\bibcite{Fujitsu:HotChips2014}{20}
+\bibcite{MPR_A53}{21}
+\bibcite{MPR_A57}{22}
+\bibcite{MPR_A72}{23}
+\bibcite{CCI}{24}
+\bibcite{Juno}{25}
+\bibcite{TRM_A7}{26}
+\bibcite{MPR_A15}{27}
+\bibcite{TRM_A15}{28}
+\bibcite{IKS}{29}
+\bibcite{EAS}{30}
+\bibcite{EAS_Linux}{31}
+\bibcite{Bienia:PhD2011}{32}
+\bibcite{Chasapis:TACO2016}{33}
+\bibcite{Kumar_micro_2003}{34}
+\bibcite{Morad_area_based}{35}
+\bibcite{Koufaty_bias}{36}
+\bibcite{Cong_quickIA}{37}
+\bibcite{quickIA}{38}
+\bibcite{VanCraeynest_fairness}{39}
+\bibcite{VanCraeynest_PIE}{40}
+\bibcite{Rodrigues_thread_scheduling}{41}
+\bibcite{Hetero95}{42}
+\bibcite{Hetero93}{43}
+\bibcite{Dup09}{44}
+\bibcite{Chronaki:ICS2015}{45}
+\bibcite{HEFT}{46}
+\bibcite{LDCP}{47}
+\@writefile{toc}{\contentsline {section}{References}{12}}

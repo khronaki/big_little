@@ -1,0 +1,30 @@
+﻿We would like to thank the reviewers for their comments to help improve this work. We believe that the community lacks this kind of thorough and reliable studies on real hardware and we consider that this work serves as a quality and unique representation of the behavior of modern asymmetric systems.
+ 
+Reviewers A and D:
+This work is novel as it demonstrates for the first time how the scheduling responsibility should be distributed across different layers of the software stack, not just the OS layer. To our knowledge, none of the previous works on asymmetric multi-core architectures has provided such a thorough and reliable performance, energy and power evaluation on real server applications. Our work might not provide a new design or implementation to overcome current obstacles, but it is novel in the sense that it shows for the first time the existing limitations of current scheduling approaches on a representative set of parallel applications and an asymmetric system.
+Q1: The task scheduling runtime is distributed among all cores of the system. It takes place on big and little cores simultaneously.
+Q2: No, we did not modify the runtime, we use the same runtime as the one used for homogeneous systems. This is one of the interesting outcomes of the paper: a system-unaware runtime offers better results than a system aware OS scheduler.
+ 
+ 
+Reviewer B:
+To our knowledge, there has not been such a comprehensive evaluation of this platform before. We consider that our study is a thorough evaluation that stretches a real asymmetric system using a well-known benchmark suite that consists of a mix of real important applications. However, we agree that we could extend sections 5.1 and 5.2 to provide a more detailed analysis for each benchmark separately and offer a deeper dive into the results per application.
+HPCA is a conference that presents studies conducted around the HPC domain; we think that our work is tied to this topic as it provides a possible solution for HPC to face the power wall and what is the best way to efficiently utilize this new asymmetric server approach.
+ 
+Q1: We consider that the PARSEC suite contains representative applications that use various parallelization models to exploit the available resources. In this suite we can find many parallel programming patterns such as data-parallel, loop parallelism or parallel pipelines. As such, this suite is generic enough for a server-to-be platform.
+Q2: Yes, we show results from 2 out of the 4 sensors (corrected Sec4.1).
+Q3: The OpenMP runtime is not heavy weight for this platform. All the runtime overheads are included in our results.
+Q4: As there is a difference in frequency and complexity, an x86 platform obtains higher performance results with higher energy consumption.
+Q5: Our study shows that the task-based solution is the best for multi-threaded programs. However, if we want to run several single-threaded workloads it is better to use an OS scheduler for higher level resource allocation.
+ 
+Reviewer C:
+Q1: The use of a task-based programming model is similar to the use of OpenMP. OpenMP offers support for tasks with specific directives that are added in the sequential code and this is easier than using the standard pthreads libraries.
+Q2: Yes, the task-based scheduling offers its own runtime system and provides an additional layer between the application code and the OS. On the other hand, in the other cases, the application’s code interacts directly with the OS since the threads are created from within the programmer’s code.
+ 
+ 
+Reviewer E:
+We agree that the task-based approach does not seem to win the other approaches in power, energy and EDP. This is due to a mistake that we did on Figure 6 as we plotted the wrong EDP chart. In the pdf we attach we have already updated Figure 6 with the correct EDP results.
+ 
+Q1: The reason for not using the highest frequency is because the machine was overheating during some experiments. By lowering the frequency we solved this problem.
+Q2: The current implementation of the task-based programming model does not allow the OS to move threads across hardware contexts. The reviewer’s proposal implies two-level scheduling: one in the OS (GTS) and another in the runtime (task-based). This would be an interesting future work in the development of a new runtime system that allows the OS to migrate threads.
+Q3: The reason for lower power in the lower performant cases is that they are not able to exploit the available resources. In these cases, the performance improvement of higher utilization comes with a proportionally lower increase in power, which is desirable. Putting a power cap to the already low power of the platform would be unfair and artificially favor the underperforming schemes. If the system power is overprovisioned and a power cap is necessary and set lower to that of the best performing scheme, frequency/voltage should be downscaled to that and results would get closer to the lowest performers. Still, the highest performer will probably get better energy efficiency (as shown in our experiments) or get higher performance with same energy efficiency, which is still desirable.
+

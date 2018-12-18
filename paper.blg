@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: paper.aux
+The style file: abbrv.bst
+Database file #1: references.bib
+You're missing a field name---line 729 of file references.bib
+ : 
+ : %  howpublished ={\url{http://events.linuxfoundation.org/sites/events/files/slides/GTS_Anderson.pdf}},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty booktitle in rollback
+(There was 1 error message)

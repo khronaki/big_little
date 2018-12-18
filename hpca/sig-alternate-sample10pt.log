@@ -1,0 +1,655 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.28)  23 NOV 2015 12:52
+entering extended mode
+**sig-alternate-sample10pt.tex
+
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\sig-a
+lternate-sample10pt.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\sig-a
+lternate-05-2015.cls
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count79
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+\epsfxsize=\dimen104
+\epsfysize=\dimen105
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip41
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen106
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count80
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count81
+\leftroot@=\count82
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count83
+\DOTSCASE@=\count84
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count85
+\c@MaxMatrixCols=\count86
+\dotsspace@=\muskip10
+\c@parentequation=\count87
+\dspbrk@lvl=\count88
+\tag@help=\toks17
+\row@=\count89
+\column@=\count90
+\maxfields@=\count91
+\andhelp@=\toks18
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks19
+\multlinegap=\skip42
+\multlinetaggap=\skip43
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+Document Class 'sig-alternate' <9th June '13>. Modified by G.K.M. Tobin/Gerry M
+urray/Boris Veytsman
+Based in part upon document Style `acmconf' <22 May 89>. Hacked 4/91 by
+shivers@cs.cmu.edu, 4/93 by theobald@cs.mcgill.ca
+Excerpts were taken from (Journal Style) 'esub2acm.cls'.
+****** Bugs/comments/suggestions/technicalities to Gerry Murray -- murray@hq.ac
+m.org ******
+Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
+
+\ACM@basesize=\count92
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\comment\comment.sty"
+\CommentStream=\write3
+
+Excluding comment 'comment') Excluding comment 'CCSXML'
+\footheight=\dimen115
+\@maxsep=\dimen116
+\@dblmaxsep=\dimen117
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+\aucount=\count93
+\originalaucount=\count94
+\auwidth=\dimen118
+\auskip=\dimen119
+\auskipcount=\count95
+\auskip=\dimen120
+\allauboxes=\dimen121
+\addauthors=\toks21
+\addauflag=\count96
+\subtitletext=\toks22
+\savesection=\count97
+\sectioncntr=\count98
+\c@figure=\count99
+\c@table=\count100
+\titleboxnotes=\toks23
+\titleboxnoteflag=\count101
+
+
+LaTeX Warning: You have requested document class `sig-alternate-05-2015',
+               but the document class provides `sig-alternate'.
+
+Document Class: sig-alternate 2013/05/12 v2.7 based on acmproc.cls V1.3 <Nov. 3
+0 '99>
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\@acmtitlebox=\box28
+\titlenotecount=\count102
+\tntoks=\toks24
+\tntokstwo=\toks25
+\tntoksthree=\toks26
+\tntoksfour=\toks27
+\tntoksfive=\toks28
+\catcount=\count103
+\copyrightnotice=\toks29
+\conf=\toks30
+\confinfo=\toks31
+\c@part=\count104
+\c@section=\count105
+\c@subsection=\count106
+\c@subsubsection=\count107
+\c@paragraph=\count108
+
+Using 'Abbrev' bibliography style
+LaTeX Info: Redefining \cite on input line 1408.
+\bibindent=\dimen122
+\colcntr=\count109
+\saveb@x=\box29
+\copyrtyr=\toks32
+\acmcopyr=\toks33
+\boilerplate=\toks34
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\acmco
+pyright.sty
+Package: acmcopyright 2014/06/29 v1.2 Copyright statemens for ACM classes
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+\XKV@toks=\toks35
+\XKV@tempa@toks=\toks36
+\XKV@depth=\count110
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+)))
+\copyrightetc=\toks37
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ae\t1aer.fd"
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))
+
+LaTeX Warning: Unused global option(s):
+    [10pt].
+
+
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\sig-a
+lternate-sample10pt.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count111
+\scratchdimen=\dimen123
+\scratchbox=\box30
+\nofMPsegments=\count112
+\nofMParguments=\count113
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count114
+\MPscratchDim=\dimen124
+\MPnumerator=\count115
+\makeMPintoPDFobject=\count116
+\everyMPtoPDFconversion=\toks39
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 136.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 136.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 136.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Warning: No \author given.
+
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 136.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1ptm.fd"
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\00-ab
+stract.tex)
+Underfull \vbox (badness 3209) has occurred while \output is active []
+
+
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\01-in
+troduction.tex [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+])
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\02-ba
+ckground.tex <figures/block_diagram.pdf, id=11, 569.87906pt x 456.20438pt>
+File: figures/block_diagram.pdf Graphic file (type pdf)
+
+<use figures/block_diagram.pdf>
+Package pdftex.def Info: figures/block_diagram.pdf used on input line 13.
+(pdftex.def)             Requested size: 240.0pt x 192.1266pt.
+ [2]
+Overfull \hbox (14.31604pt too wide) in paragraph at lines 23--25
+\T1/aer/m/n/10 of the Cortex-A15 are both 32 KB and 2-way set-associative
+ []
+
+)
+Overfull \hbox (17.66864pt too wide) in paragraph at lines 159--159
+[]\secfnt SCHEDULING IN ASYM-MET-RIC SOCS 
+ []
+
+
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\03-sc
+heduling.tex
+LaTeX Font Info:    Try loading font information for T1+aett on input line 15.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+[3 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/fi
+gures/block_diagram.pdf>]
+Overfull \hbox (3.58664pt too wide) in paragraph at lines 47--48
+\T1/aer/m/n/10 at the mo-ment the most so-phis-ti-cated schedul-ing method
+ []
+
+
+Overfull \hbox (1.3468pt too wide) in paragraph at lines 66--68
+\T1/aer/m/n/10 the edges are con-trol or data de-pen-dences be-tween them.
+ []
+
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\04-ex
+perimental.tex
+Overfull \hbox (11.54672pt too wide) in paragraph at lines 10--10
+[]\T1/aer/bx/n/8 Benchmark| 
+ []
+
+
+Overfull \hbox (7.71468pt too wide) in paragraph at lines 12--12
+[]\T1/aer/m/n/8 blackscholes| 
+ []
+
+
+Overfull \hbox (0.53072pt too wide) in paragraph at lines 13--13
+[]\T1/aer/m/n/8 bodytrack| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]\T1/aer/m/n/8 4 cam-eras, 261
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]\T1/aer/m/n/8 2.5 mil-lion el-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+\T1/aer/m/n/8 e-ments, 6,000
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+[]\T1/aer/m/n/8 100 frames,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--16
+\T1/aer/m/n/8 372,126 tetra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]\T1/aer/m/n/8 3,500 queries,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+\T1/aer/m/n/8 59,695 im-ages
+ []
+
+
+Overfull \hbox (9.2668pt too wide) in paragraph at lines 18--18
+[]\T1/aer/m/n/8 fluidanimate| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+[]\T1/aer/m/n/8 500 frames,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
+\T1/aer/m/n/8 500,000 par-ti-
+ []
+
+
+Overfull \hbox (12.68234pt too wide) in paragraph at lines 21--21
+[]\T1/aer/m/n/8 streamcluster| 
+ []
+
+
+Underfull \hbox (badness 3000) in paragraph at lines 22--22
+[]\T1/aer/m/n/8 128 swap-tions, 1
+ []
+
+
+Overfull \hbox (56.17224pt too wide) in paragraph at lines 8--28
+ [][] 
+ []
+
+[4]
+Overfull \hbox (11.88947pt too wide) detected at line 82
+[] \OT1/cmr/m/n/8 = []
+ []
+
+
+Overfull \hbox (8.61635pt too wide) in paragraph at lines 105--108
+\T1/aer/m/n/10 task-i-fied ap-pli-ca-tions fol-low the same par-al-leliza-tion 
+strat-
+ []
+
+
+Overfull \hbox (3.04651pt too wide) in paragraph at lines 114--123
+\T1/aer/m/n/10 bench-mark ex-hibits dif-fer-ent per-for-mance ra-tios be-tween
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+<figures/ideal_speedup.pdf, id=38, 606.76688pt x 256.70906pt>
+File: figures/ideal_speedup.pdf Graphic file (type pdf)
+
+<use figures/ideal_speedup.pdf>
+Package pdftex.def Info: figures/ideal_speedup.pdf used on input line 136.
+(pdftex.def)             Requested size: 240.0pt x 101.53801pt.
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\05-ev
+aluation.tex <figures/speedup-4.pdf, id=39, 1337.74782pt x 299.61937pt>
+File: figures/speedup-4.pdf Graphic file (type pdf)
+
+<use figures/speedup-4.pdf>
+Package pdftex.def Info: figures/speedup-4.pdf used on input line 3.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+<figures/power4.pdf, id=40, 1337.74782pt x 299.61937pt>
+File: figures/power4.pdf Graphic file (type pdf)
+
+<use figures/power4.pdf>
+Package pdftex.def Info: figures/power4.pdf used on input line 13.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+<figures/energy_EDP-4.pdf, id=41, 1337.74782pt x 299.61937pt>
+File: figures/energy_EDP-4.pdf Graphic file (type pdf)
+
+<use figures/energy_EDP-4.pdf>
+Package pdftex.def Info: figures/energy_EDP-4.pdf used on input line 23.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+Overfull \hbox (5.77243pt too wide) in paragraph at lines 82--83
+[]\T1/aer/m/it/10 Task-based\T1/aer/m/n/10 : dy-namic fine-grained schedul-ing 
+at run-
+ []
+
+
+Overfull \hbox (7.30664pt too wide) in paragraph at lines 92--95
+\T1/aer/m/n/10 lenges that cur-rent asym-met-ric multi-cores of-fer to emerg-
+ []
+
+
+Overfull \hbox (16.58704pt too wide) in paragraph at lines 92--95
+\T1/aer/m/n/10 (de-noted \T1/aer/m/it/10 Static thread-ing\T1/aer/m/n/10 ). The
+ OS-based dy-namic schedul-
+ []
+
+[6 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/fi
+gures/ideal_speedup.pdf>]
+<figures/averages_4plus.pdf, id=59, 1337.74782pt x 299.61937pt>
+File: figures/averages_4plus.pdf Graphic file (type pdf)
+
+<use figures/averages_4plus.pdf>
+Package pdftex.def Info: figures/averages_4plus.pdf used on input line 115.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (7.71655pt too wide) in paragraph at lines 128--129
+\T1/aer/m/n/10 with queues for the data-exchange be-tween pipeline stages
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/f
+igures/speedup-4.pdf> <C:/Users/bscuser/Documents/Research/parsec-ompss/publica
+tions/big_little/figures/power4.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/bscuser/Documents/Research/parsec-ompss
+/publications/big_little/figures/power4.pdf): PDF inclusion: multiple pdfs with
+ page group included in a single page
+>] <figures/speedup-4plus.pdf, id=89, 1337.74782pt x 299.61937pt>
+File: figures/speedup-4plus.pdf Graphic file (type pdf)
+
+<use figures/speedup-4plus.pdf>
+Package pdftex.def Info: figures/speedup-4plus.pdf used on input line 160.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+<figures/power4plus.pdf, id=90, 1337.74782pt x 299.61937pt>
+File: figures/power4plus.pdf Graphic file (type pdf)
+
+<use figures/power4plus.pdf>
+Package pdftex.def Info: figures/power4plus.pdf used on input line 170.
+(pdftex.def)             Requested size: 504.0pt x 112.88274pt.
+
+Overfull \hbox (21.1938pt too wide) in paragraph at lines 200--200
+[]\secfnt Adding Lit-tle Cores to a Sym-met-ric Multi-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/f
+igures/energy_EDP-4.pdf> <C:/Users/bscuser/Documents/Research/parsec-ompss/publ
+ications/big_little/figures/averages_4plus.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/bscuser/Documents/Research/parsec-ompss
+/publications/big_little/figures/averages_4plus.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<figures/stream_samples_A15.pdf, id=123, 654.94687pt x 277.035pt>
+File: figures/stream_samples_A15.pdf Graphic file (type pdf)
+
+<use figures/stream_samples_A15.pdf>
+Package pdftex.def Info: figures/stream_samples_A15.pdf used on input line 241.
+
+(pdftex.def)             Requested size: 240.0pt x 101.5164pt.
+
+<figures/stream_samples_total.pdf, id=124, 654.94687pt x 277.035pt>
+File: figures/stream_samples_total.pdf Graphic file (type pdf)
+
+<use figures/stream_samples_total.pdf>
+Package pdftex.def Info: figures/stream_samples_total.pdf used on input line 24
+2.
+(pdftex.def)             Requested size: 240.0pt x 101.5164pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/f
+igures/speedup-4plus.pdf> <C:/Users/bscuser/Documents/Research/parsec-ompss/pub
+lications/big_little/figures/power4plus.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/bscuser/Documents/Research/parsec-ompss
+/publications/big_little/figures/power4plus.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+>]
+Overfull \hbox (9.13019pt too wide) in paragraph at lines 269--269
+[]\secfnt Power Con-sump-tion Anal-y-sis over Time 
+ []
+
+
+Overfull \hbox (4.39777pt too wide) in paragraph at lines 319--319
+[]\secfnt Exploiting As-sis-tant Cores for Run-time
+ []
+
+[10 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/f
+igures/stream_samples_A15.pdf> <C:/Users/bscuser/Documents/Research/parsec-omps
+s/publications/big_little/figures/stream_samples_total.pdf
+
+pdfTeX warning: pdflatex (file C:/Users/bscuser/Documents/Research/parsec-ompss
+/publications/big_little/figures/stream_samples_total.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>] <figures/speedup-def-big-little.pdf, id=181, 654.94687pt x 277.035pt>
+File: figures/speedup-def-big-little.pdf Graphic file (type pdf)
+
+<use figures/speedup-def-big-little.pdf>
+Package pdftex.def Info: figures/speedup-def-big-little.pdf used on input line 
+344.
+(pdftex.def)             Requested size: 240.0pt x 101.5164pt.
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\06-re
+lated.tex
+Overfull \hbox (4.53651pt too wide) in paragraph at lines 21--34
+\T1/aer/m/n/10 the most chal-leng-ing top-ics in this area of study. Bias [28]
+ []
+
+[11 <C:/Users/bscuser/Documents/Research/parsec-ompss/publications/big_little/f
+igures/speedup-def-big-little.pdf>]
+Overfull \hbox (12.79631pt too wide) in paragraph at lines 43--58
+\T1/aer/m/n/10 uti-liz-ing asym-met-ric sys-tems. The Lev-elized Min Time [23]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\07-co
+nclusions.tex
+Overfull \hbox (1.18729pt too wide) in paragraph at lines 9--10
+\T1/aer/m/n/10 stack does not pro-vide a dy-namic sched-uler at some
+ []
+
+[12])
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\sig-a
+lternate-sample10pt.bbl [13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14])
+[15
+
+]
+(C:\Users\bscuser\Documents\Research\parsec-ompss\publications\big_little\sig-a
+lternate-sample10pt.aux) ) 
+Here is how much of TeX's memory you used:
+ 3032 strings out of 493921
+ 40133 string characters out of 3144870
+ 109912 words of memory out of 3000000
+ 6204 multiletter control sequences out of 15000+200000
+ 63367 words of font info for 96 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 41i,9n,34p,1385b,471s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fo
+ntname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/urw/times/utmr8a.pfb>
+Output written on sig-alternate-sample10pt.pdf (15 pages, 2225228 bytes).
+PDF statistics:
+ 253 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+

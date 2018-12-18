@@ -1,0 +1,169 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is the template for submission to HPCA 2017
+% The cls file is a modified from  'sig-alternate.cls'
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{sig-alternate}
+
+\newcommand{\ignore}[1]{}
+\usepackage{fancyhdr}
+
+\usepackage{listings}
+
+
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+% Add the compsocconf option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+\usepackage{amsmath}
+
+
+\usepackage{balance}
+\usepackage{epsfig}
+%\usepackage{subfigure}
+\usepackage{color}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{pifont}% http://ctan.org/pkg/pifont
+%\newcommand{\cmark}{\ding{51}}%
+%\newcommand{\xmark}{\ding{55}}%
+%\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\newcommand{\subparagraph}{}
+\usepackage{titlesec}
+
+\newcommand{\kc}{\textcolor{red}{Kallia: }\textcolor{red}}
+\newcommand{\mm}{\textcolor{blue}{\textbf{Miquel: }}\textcolor{blue}}
+\newcommand{\mc}{\textcolor{green}{Marc: }\textcolor{green}}
+\newcommand{\ar}{\textcolor{orange}{AR: }\textcolor{orange}}
+
+
+\iffalse
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+\fi
+
+\lstset{
+     basicstyle=\small\ttfamily,
+     keywordstyle=\small ,          % keyword style xleftmargin=30pt,
+     commentstyle=\small\bfseries\textit,       % comment style
+     stringstyle=\small\bfseries,         % string literal style
+     frame=, % draw a frame at the top and bottom of the code block
+   %  tabsize=4, % tab space width
+   %  showstringspaces=false, % don't mark spaces in strings
+  %  numbers=left, % display line numbers on the left
+     commentstyle=\color{blue}, % comment color
+  %   keywordstyle=\color{blue}, % keyword color
+  %   stringstyle=\color{red} % string color
+}
+
+
+%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
+\newcommand{\microsubmissionnumber}{265}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fancypagestyle{firstpage}{
+  \fancyhf{}
+\setlength{\headheight}{50pt}
+\renewcommand{\headrulewidth}{0pt}
+  \fancyhead[C]{\normalsize{HPCA 2017 Submission
+      \textbf{\#\microsubmissionnumber} -- Confidential Draft -- Do NOT 
+Distribute!!}} 
+  \pagenumbering{arabic}
+}  
+
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+
+\title{On the Maturity of Parallel Applications for \\ Asymmetric Multi-Core 
+Processors}
+
+\author{}
+
+% make the title area
+\maketitle
+\thispagestyle{firstpage}
+\pagestyle{plain}
+
+\begin{abstract}
+\input{00-abstract}
+\end{abstract}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+\input{01-introduction}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{The ARM big.LITTLE Architecture}
+\label{sec:background}\label{sec:suitability}
+\input{02-background}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Scheduling in Asymmetric Multi-Cores}
+\label{sec:scheduling}
+\input{03-scheduling}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Experimental Methodology}
+\label{sec:experimental}
+\input{04-experimental}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Evaluation}
+\label{sec:evaluation}
+\input{05-evaluation}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\section{Related Work}
+\label{sec:related}
+\input{06-related}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+\label{sec:conclusions}
+\input{07-conclusions}
+
+%%%%%%%%% -- BIB STYLE AND FILE -- %%%%%%%%
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+%\end{thebibliography}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+
+% that's all folks
+\end{document}
+
+

@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Scheduling a set of processes on an AMC system is more challenging than the traditional process scheduling on SMCs. 
+An efficient OS scheduler has to take into account the different characteristics of the cores and act accordingly~\cite{coolingAware}.
+There have been three mainstream OS schedulers for ARM big.LITTLE systems: \textit{cluster switching}, 
+\textit{in-kernel switch} and \textit{global task scheduling}, described in the next sections.
+In the case of parallel applications, \textit{dynamic scheduling at the runtime system level} can be exploited to balance the workload among the different cores and is described in section~\ref{sec:runtime}.
+Finally, when all the scheduling mechanisms are disabled, the thread scheduling decisions are based on the \textit{static application-level scheduling}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cluster Switching and In-Kernel Switch}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the Cluster Switching (CS) approach~\cite{samsung}, only one of the clusters is active at any given time: either the cluster with little cores or the cluster with big cores executes. Thus, the OS scheduler operates on a \emph{de-facto} symmetric multi-core with only four cores, namely the cores of the current active cluster. The policy to change the operating cluster is based on CPU utilization. When idle, background processes are executed on the little cores. When CPU utilization surpasses a threshold, all processes (foreground and background) are migrated to the big cluster. When running on the big cluster, if CPU utilization decreases below a given lower threshold, the entire workload is moved to the little cluster. 
+%In this approach, all L2 cache contents are moved from one cluster to the other via the cache coherent interconnect.
+%So, the entire workload of tasks is being managed as a unique entity and according to 
+%its operational intensity the OS chooses the appropriate cluster for execution.
+%An enhanced version of the \texttt{cpufreq} driver, which is driven by CPU utilization, makes the decision to transition from one cluster to the other without involving changes at the OS kernel level.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{In-Kernel Switch}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the In-Kernel Switch (IKS) approach~\cite{IKS}, each little core is paired with a big core and it is seen as a single core. On idle, background processes are run on little cores. When the CPU utilization on a given little core surpasses a threshold, the execution on that core is migrated to the big core. When the CPU utilization decreases on that big core below a given threshold, the execution migrates to the associated little core. Thus, at the same time, little and big cores may co-execute, but only one of each pair is active at a given point in time, effectively exploiting just half of the cores concurrently. For both CS and IKS, an enhanced \texttt{cpufreq} driver manages the switching within each core pair.
+
+%The advantage of IKS over CS is that different types of cores can be used at the same time to more efficiently execute a mix of high and low CPU utilization processes. The drawback is that, unlike in CS, the system must have the same number of little and big cores, as they must be paired one to one.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Global Task Scheduling}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Global Task Scheduling (GTS)~\cite{samsung}
+%\footnote{Different implementations of GTS exist based on the same concepts. Samsung denotes its proprietary implementation \emph{Heterogeneous Multi-Processing}} 
+allows running applications on all cores in the asymmetric multi-core. In GTS, all cores are 
+available and visible to the OS scheduler, and this scheduler is aware of the characteristics of 
+the core types. Each process is assigned to a core type depending on its CPU utilization:
+high CPU utilization processes are scheduled to big cores and low CPU utilization processes to 
+little cores. GTS also migrates processes between big and little cores when their CPU utilization 
+changes. As a result, cores are active depending on the characteristics of the workload. 
+
+The key benefit of GTS is that it can use all the cores simultaneously, providing higher peak 
+performance and more flexibility to manage the workload. In GTS tasks are directly migrated to cores 
+without needing the intervention of the \texttt{cpufreq} daemon, reducing response time and 
+minimizing the overhead of context switches. As a consequence, Samsung reported 20\% improvement in 
+performance over CS for mobile benchmarks~\cite{samsung}. Also, GTS supports clusters with 
+different number of cores (e.g. with 2 big cores and 4 little cores), while IKS requires to have 
+the same number of cores per cluster.
+
+% \begin{itemize}
+%  \item In GTS tasks are directly migrated to cores, while in CS the entire workload is migrated to clusters. This makes the scheduling more flexible and helps on the more effective utilization of the system according to the workload.
+% % \item Finer grained control of workloads that are migrated between cores. Because the scheduler is directly migrating tasks between cores, kernel overhead is reduced and power savings can be correspondingly increased.
+%  %\item Since GTS is implemented in the OS scheduler instead of the \texttt{cpufreq} framework, switching decisions are boosted by 10\% according to ARM~\cite{HEXUS}. Also, 
+%  \item GTS can support clusters with different number of cores (e.g. with 2 big cores and 4 little cores), while IKS requires to have exactly the same number of cores per cluster.
+%  \item The ability to use all cores simultaneously provides higher peak performance and more flexibility to manage the workload.
+% \end{itemize}
+% As a result of these characteristics, 
+% %ARM reported around 10\% improvements in performance/watt over CS for mobile benchmarks~\cite{}, while 
+% Samsung reported 20\% improvement in performance over CS for mobile benchmarks~\cite{samsung}. 
+% %\mm{Benefits because of faster transitions, more cores are used or a combination of both?}
+
+
+%Also, interesting slides: http://events.linuxfoundation.org/ sites/events/files/slides/GTS\_Anderson.pdf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dynamic Scheduling in the Runtime}
+\label{sec:runtime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In the context of parallel applications, the OS lacks knowledge about their internal structure and CPU utilization may be ineffective to schedule its threads (seen as processes in Linux). The runtime system of the parallel programming model has this knowledge and therefore seems to be the right entity in the software stack to perform the application scheduling to exploit multi-core asymmetry for better performance and energy efficiency.
+
+
+%The use of parallel programming models on such systems could increase performance and energy efficiency. 
+Current programming models for shared memory systems such as OpenMP rely on a 
+runtime system to manage the execution of the parallel application. 
+In this work, we make use of two types of programming models: loop- and task-based.
+Loop-based scheduling distributes the iterations of a loop among the 
+threads available in the system, following a traditional \textit{fork-join} model.
+OpenMP supports loop-based scheduling through its \emph{parallel for} directives. 
+This clause implies a barrier synchronization at the end of the loop\footnote{unless 
+specified otherwise with the \texttt{nowait} clause}, and supports either static or dynamic loop 
+scheduling. 
+
+With static loop scheduling, the iterations of a loop are divided to as many chunks as the number of cores.
+Then, every core executes the assigned chunk, leading to a low-overhead static scheduling.
+% that even the compiler can generate code for it without the need of runtime intervention.
+In addition, OpenMP supports dynamic loop scheduling. 
+It generates more chunks than cores, and assigns them to the available cores at runtime. 
+This is more suitable to asymmetric multi-core systems where the cores are not similar and a static iteration assignment would cause load imbalance.
+%To evaluate this approach we use the OpenMP programming model.
+
+Recent advances in programming models recover the use of task-based programming models to simplify parallel programming of multi-cores~\cite{OpenMP4.0:Manual2013, OmpSs_PPL11, Zuckerman:EXADAPT2011, Bauer.2012.SC, Vandierendonck:PACT2011}. 
+In these models the programmer splits the code in sequential pieces of work (tasks) and specifies the data dependencies among them.  
+With this information the runtime system schedules tasks and manages synchronization. These models ease programmability~\cite{OpenMP4.0:Manual2013, OmpSs_PPL11, Zuckerman:EXADAPT2011, Bauer.2012.SC, Vandierendonck:PACT2011, Vandierendonck:Hyperq},
+%~\cite{clusterss,clusterss_cpe}, 
+and also increase performance by avoiding global synchronization points.
+%The increased task granularity that the runtime system can offer has a positive effect on their most effective execution with the minimum possible energy consumption.
+
+%\textit{OmpSs Programming Model:}
+% To evaluate this approach we use OmpSs~\cite{OmpSs_PPL11}, a task-based programming model conceived as a forerunner of OpenMP~\cite{OpenMP4.0:Manual2013}. 
+To evaluate this approach we make use of OpenMP tasking support~\cite{OpenMP4.0:Manual2013}. 
+OpenMP allows expressing tasks and data dependences between them using equivalent code annotations. 
+It conceives the parallel execution as a \emph{task dependence graph} (TDG), where nodes are 
+sequential pieces of code (tasks) and the edges are control or data dependences between them. 
+The runtime system builds this TDG at execution time and dynamically schedules tasks to the available cores.
+Tasks become ready as soon as their input dependencies are satisfied.
+The scheduling of the ready tasks is done in a first-come-first-served manner, using a FIFO scheduler.  
+Even though this scheduler is not aware of the task computational requirements or the core type and its performance and power characteristics, it can balance the load as long as there are ready tasks available thanks to the lack of global synchronization.
+
+\subsection{Static Scheduling in the Application Level}
+When the OS and runtime schedulers are disabled scheduling relies on the application. 
+Current parallel applications generate software threads and rely on the operating system for the efficient mapping of these threads on the available cores. 
+By disabling the operating system scheduler, each created thread is pinned on one of the cores and it is not allowed to migrate to another hardware component. 
+Each pinned thread executes the work that the application is assigning to it statically. 
+In this scenario, the application is responsible for the efficient parallelization, as it only depends on how the application is statically assigning the work on each of the software threads. 
+
+
+To evaluate this approach, we make use of applications that are implemented using the pthreads model. 
+We then modify the code of the application so that each created thread is pinned to the next available processor.
+This way, threads are statically assigned to processors and the operating system is not allowed to modify this.
+%
+%
+
+
+%\kc{maybe we should remove these details? We do not include such details for loop scheduling}A task is \textit{created} when a call to this task is discovered in the code. The runtime system adds it to the TDG using the specified input dependences. The task cannot be scheduled until all its inputs dependences are produced by other tasks previously created. When all dependences are satisfied, the task becomes \textit{ready} and is inserted in a \textit{ready queue}. At this point, the task can be executed according to the scheduling policy of the runtime. Ready queues can be thread-private or shared among multiple threads. When a thread becomes idle, the scheduling policy selects a task from a ready queue and it is executed in that particular thread.
+
+%\kc{do we need to explain the fifo scheduler? }%\kc{Adding description of fifo scheduler:}
+%The default scheduling policy is processing the tasks in a \emph{first in, first out} manner (FIFO). 
+%This policy is implemented with a single ready FIFO queue shared among all threads for keeping the ready tasks. 
+%Whenever a task becomes ready it is pushed to the tail of the ready queue;
+%the first available processor, pops the ready task that resides at the head of the ready queue. 
+%Simultaneous pushes and pops are protected by locking mechanisms.
+%Because tasks are scheduled dynamically to available cores, this scheduler automatically balances the load without the need of work stealing. This FIFO scheduler is not aware of the task computational requirements or the core type and its performance and power characteristics, but only relies on the availability of tasks and resources.
+
+%More advanced runtime features are also available, providing runtime support for NUMA-aware allocation, task priorities, device support for heterogeneity, different scheduling policies, throttling policies, dependence tracking mechanisms, work-sharing and work stealing. However, in this paper we make use of the simple FIFO scheduler and the vanilla features of the runtime system for a fair comparison with GTS.
+
+
+
+% \subsection{Dynamic Scheduling at Operating System Level}
+% 
+% Scheduling a set of processes on an asymmetric multi-core system with big.LITTLE 
+% architecture is trickier than the traditional process scheduling on 
+% homogeneous multi-cores. An efficient OS scheduler has to take into account
+% the different characteristics of the core types of the system.
+% ARM supports two different approaches on scheduling chips with big.LITTLE architecture:
+% the \textit{cluster switching}, and the \textit{global task scheduling}. 
+% 
+% In the cluster switching (CS) approach the cores are grouped into two clusters:
+% the big-core cluster, that consists of the Cortex-A15 cores of the system and the 
+% little-core cluster that consists of the Cortex-A7 cores. 
+% At each given time, only one of the clusters is activated; the activated cluster is the one responsible for the execution of the tasks. 
+% Thus, the linux OS scheduler does not require any modification and is operating on 4 homogeneous cores each time namely, 
+% the cores of the current activated cluster.
+% %The deactivated cluster is not processing any task.
+% The entire workload of tasks is being managed as a unique entity and the operating system is keeping track of its operational intensity. 
+% If the workload reaches a pre-defined threshold, then the entire workload is moved to the other cluster, 
+% and the current cluster gets deactivated. 
+% %So, the entire workload of tasks is being managed as a unique entity and according to 
+% %its operational intensity the OS chooses the appropriate cluster for execution.
+% The cluster switching is performed by the CPU frequency framework.
+% 
+% 
+% The second approach is the one that we evaluate in this paper. 
+% With the global task scheduling (GTS), all cores are available and visible to the OS scheduler. 
+% The OS scheduler is aware of the characteristics and the type of each one of the cores. 
+% Moreover, the workload is being managed as a set of tasks, which are practically threads. 
+% Each task is characterized by its intensity.
+% The OS linux scheduler is modified so that it schedules the high intensity tasks to the big cores (A15 cores)
+% and the low intensity tasks to the little cores (A7 cores). 
+% This way, the activated cores are chosen according to the tasks of the workload. 
+% This is characterized as the most sophisticated method of scheduling tasks on big.LITTLE \cite{samsung}.
+% 
+% The key benefits of GTS over CS are:
+% \begin{itemize}
+%  \item Tasks are directly migrated to cores instead of workload being migrated to clusters. This makes the scheduling more flexible and helps on the more effective utilization of the system according to the workload.
+% % \item Finer grained control of workloads that are migrated between cores. Because the scheduler is directly migrating tasks between cores, kernel overhead is reduced and power savings can be correspondingly increased.
+%  \item Implementation in the scheduler also makes switching decisions faster than in the cpufreq framework, and ARM have reported around 10\% improvements in performance/watt over CS on a range of benchmarks. Samsung reported 20\% improvement in performance.
+%  \item GTS can easily support non-symmetrical SoCs (e.g. with 2 Cortex-A15 cores and 4 Cortex-A7 cores)
+%  \item The ability to use all cores simultaneously to provide improved peak performance throughput of the SoC compared to IKS.
+% \end{itemize}
+% 
+% 
+% 
+% %Describe OS process scheduler developed by ARM for the big.LITTLE.
+% 
+% %GNU/Linux based, Ubuntu 14.04 LTS
+% 
+% %Vanilla Linux kernel with an additional scheduler. Developed by ARM for their big.LITTLE platform: the Global Task Scheduler
+% 
+% %Assigns processes/threads to slow or big cores based on the load the process generates
+% 
+% %An upper and lower threshold, average load to decide when to move from one cluster of cores to the other.
+% 
+% %From: https://www.linaro.org/blog/hardware-update/big-little-software-update/
+% 
+% %The second is the Global Task Scheduling (GTS) software developed (and now named) by ARM. This is known in Linaro as big.LITTLE MP. Using GTS all of the big and LITTLE cores are available to the Linux kernel for scheduling tasks. We are very proud that Linaro has contributed to ARM’s development of the GTS software, and that it is now publicly available in Linaro builds. ARM and Linaro recommend GTS for new products, and Linaro members are actively planning product deployments using this solution.
+% 
+% %Core Software Configuration for GTS (4+4)
+% 
+% 
+% %The key benefits of GTS over IKS are:
+% 
+% %\begin{itemize}
+% % \item Finer grained control of workloads that are migrated between cores. Because the scheduler is directly migrating tasks between cores, kernel overhead is reduced and power savings can be correspondingly increased.
+% % \item Implementation in the scheduler also makes switching decisions faster than in the cpufreq framework, and ARM have reported around 10\% improvements in performance/watt over IKS on a range of benchmarks.
+% % \item The ability to easily support non-symmetrical SoCs (e.g. with 2 Cortex-A15 cores and 4 Cortex-A7 cores)
+% % \item The ability to use all cores simultaneously to provide improved peak performance throughput of the SoC compared to IKS.
+% 
+% %\end{itemize}
+% 
+% %The big.LITTLE MP patch set creates a list of Cortex-A15 and Cortex-A7 cores that is used to pick the target core for a particular task. Then, using runnable load average statistics, the Linux scheduler is modified to track the average load of each task, and to migrate tasks to the best core. High intensity tasks are migrated to the Cortex-A15 core(s) and are also marked as high intensity tasks for more efficient future allocations.  Low intensity tasks remain resident on the Cortex-A7 core(s).
+% 
+% %Also, interesting slides: http://events.linuxfoundation.org/ sites/events/files/slides/GTS\_Anderson.pdf
+% 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Dynamic Scheduling at Runtime Level}
+% 
+% \subsubsection{OmpSs Programming Model}
+% %OmpSs is a task-based programming model that offers a high level abstraction to the implementation of parallel applications for various homogeneous and heterogeneous architectures~\cite{OmpSs_PPL11,OmpSs}. It enables the annotation of function declarations with the task directive, which declares a task. Every invocation of a such function creates a task that is executed concurrently with other tasks or parallel loops. OmpSs also supports task dependencies and it uses the StarSs~\cite{StarSs} dependency tracking mechanisms. OmpSs is built with the support of the Mercurium compiler, responsible for the translation of the OmpSs annotation clauses to source code, and the Nanos++ runtime system, responsible for the internal creation and execution of the tasks.
+% 
+% %As a task-based parallel programming model, OmpSs enables the annotation of function declarations with the task directive. If a function is declared as a task, then every invocation of this function creates a task that is executed concurrently with other tasks or parallel loops. The accessible data to each task are the arguments of the function. OmpSs uses the StarSs~\cite{StarSs} dependency tracking mechanisms and each task may be annotated with the \textit{in}, \textit{out}, \textit{inout} clauses. These clauses allow the specification of scalars, arrays and pointers as input, output or input and output data of a task. The implementation of a barrier is supported under the \textit{taskwait} clause, and it can also be used with the addition of the \textit{on} clause, to declare a barrier for the group of tasks that produce a specific piece of data. These original OmpSs features can now be found in OpenMP 4.0~\cite{OpenMP}.
+% 
+% OmpSs~\cite{OmpSs} is a task-based programming model conceived as a forerunner of OpenMP. 
+% While both OmpSs and OpenMP 4.0 allow the programmers to express tasks and data-dependences between them, OmpSs provides some extra feaatures like runtime support for NUMA-aware allocation or task priorities. 
+% OmpSs conceives the parallel execution as a graph where the nodes are sequential pieces of code, the tasks, and the edges are control or data dependences between them.
+% 
+% The OmpSs runtime is Nanos++, which provides device support for heterogeneity and includes different plug-ins for implementations of scheduling policies, throttling policies, thread barriers, dependency tracking mechanisms, work-sharing and instrumentation. 
+% This design allows to maintain the runtime features by adding or removing plug-ins. Thus, the implementation of a new scheduler, or the support of a new architecture becomes simple.
+% The implementations of the different scheduling policies in Nanos++ perform various actions on the states of the tasks. A task is \textit{created} if a call to this task is discovered but it is waiting until all its inputs are produced by other previous tasks. When all the input dependencies are satisfied, the task becomes \textit{ready}. The ready tasks of the application at a given point in time are inserted in the \textit{ready queues} as stated by the scheduling policy. Ready queues can be thread-private or shared among multiple threads. When a thread becomes idle, the scheduling policy picks a task from the ready queues for that thread to execute. 
+% 
+% \kc{The task priorities do not need to be described in my opinion}
+% The Nanos++ internal data structures support task prioritization. The task priority is an integer field inside the task descriptor that rates the importance of the task. If the scheduling policy supports priorities, the ready queues are implemented as \textit{priority queues}. In a priority queue, tasks are sorted in a decreasing order of their priority. The insertion in a priority queue is always ordered and the removal of a task is always from the head of the queue, i.e., the task with the highest priority. The priority of a task can be either set in user code, by using the \textit{priority} clause, which accepts an integer priority value or expression, or dynamically  by the scheduling policy, as is described in the next section.
+% 
+% \kc{Adding description of fifo scheduler:}
+% The default OmpSs scheduling policy is processing the tasks in a first-come first-served manner (FIFO). 
+% It maintains a single ready FIFO queue shared among threads for keeping the ready tasks. 
+% Whenever a task becomes ready it is pushed to the tail of the ready queue;
+% the first available processor, pops the ready task that resides at the head of the ready queue. 
+% Simultaneous pushes and pops are protected by the OmpSs locking mechanisms.
+% Because the tasks are scheduled dynamically to the available cores, this scheduler achieves automatic load balance without the need of work stealing. 
+% Finally, the scheduler is not aware of the task intensity or the core type and its characteristics, but only relies on the availability of tasks and resources.
+% 
+% 
+% \mm{Describe only FIFO. In my opinion, extending the evaluation to CATS should be done in an extension paper for a journal.}

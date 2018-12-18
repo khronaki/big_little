@@ -1,0 +1,38 @@
+We are thankful to the reviewers for their valuable comments. 
+This paper extensively highlights the limitations of the state-of-the-art OS scheduling approaches (e.g. GTS) and demonstrates how to tackle them by using task-based parallel runtime systems. This work is novel since it demonstrates for the first time how the scheduling responsibility should be distributed across different layers of the software stack, not just the OS layer. To our knowledge, none of the previous works on big.LITTLE architecture has provided such a thorough and reliable performance, energy and power evaluation on real HPC applications.
+
+Apart from stressing out the asymmetric system, our work finds the optimal way of utilizing it. Contrarily to the In-Kernel-Switch and the Cluster-Switching, the GTS approach is the most sophisticated dynamic scheduling approach on the market, offered with most big.LITTLE boards. To our knowledge, this is the only commercially available dynamic job scheduler that is provided by ARM in order to offer performance and energy efficiency. Our findings show that task-based programming models achieve better results than a product that is used on every single device with this architecture. 
+
+Moreover, we demonstrate that the addition of (at least one) little core to a homogeneous big-core system degrades system's performance even if the number of cores is increased. The commercially approved GTS dynamic scheduler does not manage to increase performance and effectively utilize the little cores. We choose the most naive scheduling approach (FIFO scheduler) among the wide variety of task-based schedulers since we want to point out that in its simplest form, a task-based scheduler constantly increases performance and keeps energy stable. We consider this a novel insight that does not appear in prior works.
+
+Additionally, our work exploits the use of assistant cores for the runtime activity. The findings of this section propose modifications on the task-based approach so that one core is devoted for the execution of the sequential codes and of the runtime overheads. This part of the paper shows that applications with high sequential code regions benefit by executing them on a big core, while most of the applications benefit when the sequential code is executed on the first available core of the system.
+
+We agree that a few parts of the text could be improved so that they do not raise questions to the reader. For example we plan to explain that the design of fluidanimate and facesim benchmarks limits their results to core counts that are either multiples or powers of 2 respectively. Moreover, we plan to highlight why the set of benchmarks used from the PARSECSs suite is considered representative.
+
+We consider that this paper is a valuable piece of work that provides researchers with useful results for building and utilizing the future asymmetric multi-core systems. The use of real hardware and real HPC workloads make this paper a reliable and unique illustration of the efficient exploitation of asymmetric systems, taking into account the performance and energy tradeoffs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================old===============
+
+The authors believe that the limitations of state-of-the-art OS scheduling approaches (e. g. GTS) are not well understood by the research community, especially when deployed over very unbalanced architectures (e. g. 4 big + 1 LITTLE cores). Even more, this paper is novel in the sense that it demonstrates for the first time how the scheduling responsibility should be distributed across different layers of the software stack, not just the OS layer. That is a key discovery to enable efficient asymmetric multi-core designs.
+
+It is well known that currently the main challenge for future system designs is energy efficiency. Homogeneous multi-core systems are suffering by high energy consumption and this is the reason why mobile processors are nowadays heterogeneous, as we want the battery to last long. Many researchers are pushing towards the use of asymmetric multi-cores as a solution to tackle the power wall when running scientific applications. Our study is thoroughly stressing such a platform to evaluate its maturity of running high processing parallel applications like PARSEC.
+
+
+Our contributions and insights are not provided by previous works since in our work we use the real hardware, with real applications and existing state of the art scheduling approaches. We believe that our paper clearly shows the performance and energy trade-off in such systems and what scheduling approach should be chosen.
+
+

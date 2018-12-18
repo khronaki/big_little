@@ -1,0 +1,195 @@
+
+We are thankful to the reviewers for their valuable comments.
+The authors believe that the study of exploration of asymmetric multi-core processors is an evaluation of real hardware with significant and novel contributions to the research community.
+As the related work section presents in detail, none of the prior works on asymmetric systems is addressing the effectiveness of the currently used dynamic scheduling approach (GTS) nor provides a comparison between major scheduling approaches.
+As so, we consider that this work serves as a valuable reference and opens doors to new research.
+
+It is well known that currently the main challenge for future system designs is energy efficiency.
+Homogeneous multi-core systems are suffering by high energy consumption and this is the reason why mobile processors are nowadays heterogeneous; because we want the battery to last long.
+Many researchers are pushing towards the use of asymmetric multi-cores as a solution to benefit by the asymmetry and tackle the power wall when running scientific applications.
+Our study is thoroughly stressing such a platform to evaluate its maturity of running high processing parallel applications like PARSEC.
+A more analytical reasoning for working on this platform with these kinds of applications can be found in section 1 of the paper.
+
+Apart from stressing out the asymmetric system, our work finds the optimal way of utilizing this system.
+We consider that the GTS approach is the most sophisticated dynamic scheduling approach on the market.
+To our knowledge, this is the only commercially available dynamic job scheduler that is provided by ARM (thanks to Linaro) in order to offer performance and energy efficiency.
+Our findings show that task based programming models actually achieve better results than a product that is used on every single device with this architecture.
+Moreover, we demonstrate that the addition of (at least one) little core to a homogeneous big-core system degrades system's performance even if the number of cores is increasing.
+The commercially approved GTS dynamic scheduler does not manage to increase performance and effectively utilize the little cores.
+We prove that the task-based approach is able to constantly increase performance and keep energy stable and we consider this a novel insight that does not appear in prior works.
+
+Surprisingly, none of the reviewers mentioned about our contribution in the exploitation of assistant cores for the runtime activity.
+The findings of this section propose modifications on the task-based approach so that one core is devoted for the execution of the sequential codes and of the runtime overheads.
+This part of the paper shows that applications with high sequential code regions benefit by executing them on a big core, while most of the applications benefit when the sequential code is executed on the first available core of the system.
+
+To conclude, we consider that this paper is a valuable piece of work that will help researchers in building and utilizing the future asymmetric multi-core systems.
+Our contributions and insights are not provided by previous works since in our work we use the real hardware, with real applications and existing state of the art scheduling approaches.
+We believe that our paper clearly shows the performance and energy trade-off in such systems and what scheduling approach should be chosen.
+
+
+
+
+
+%----------- NOTES
+
+
+
+
+
+
+
+
+
+
+
+
+Complaints:
+1.nothing novel
+2.well known and straightforward insights
+3.no new ideas
+4.expected results
+5.the insights are the same as the works with simulated evaluation
+6.why you would need to run on this platform??
+
+
+
+Strengths:
+-real hardware vs simulation based
+-comprehensive analysis
+-real hardware
+-various number of cores
+-performance, power, energy, EDP
+-thorough analysis
+-demonstrates the need for task-based prog models/dynamic task scheduling
+
+
+Suggestions:
+-submit to ISPASS
+-instead of evaluating BF, use a scheduler that is aware of the platform/task requirements
+-compare with a symmetric system
+
+Questions:
+1) The experimental methodology would greatly benefit from breaking down each benchmark execution time into [busy; idle; switching overhead] time 
+to better understand the performance and power results obtained on hardware.
+2) Did the authors explore the impact that varying the task size would have on the performance of the task scheduler? 
+Was there an application-specific optimal task size that balances runtime-overhead and load balancing?
+3) Why does GTS lead to lower utilization than Task-Based (see Eval, section C). 
+In section B, it is stated that GTS only achieves a limited speedup of 5% with the addition of 4 little cores, 
+but the authors don't provide an explanation.
+3) Can changing the application-specific load balancing affect the performance of the benchmark on a homogeneous system? 
+If so, how can we isolate this effect when evaluating different scheduling mechanisms on a heterogeneous system?
+4)Does GTS represent the state of the art in dynamic schedulers?  Are there other more interesting comparison points?
+
+
+Rebuttal:
+par1:
+We are thankful to the reviewers for their valuable comments.
+The authors believe that the study of exploration of asymmetric multi-core processors is an evaluation of real hardware with significant and novel contributions to the research community.
+As the related work section presents in detail, none of the prior works on asymmetric systems is addressing the effectiveness of the currently used dynamic scheduling approach (GTS) nor provides a comparison between major scheduling approaches.
+As so, we consider that this work serves as a valuable reference and opens doors to new research.
+
+%to tackle the performance and energy efficiency of asymmetric systems 
+%we believe that such a study is food for the exploration of new mechanisms on the runtime or operating system level.
+
+par2: argue about complaint6: why you would need to run on this platform??
+
+It is well known that currently the main challenge for future system designs is energy efficiency.
+Homogeneous multi-core systems are suffering by high energy consumption and this is the reason why mobile processors are nowadays heterogeneous; because we want the battery to last long.
+Many researchers are pushing towards the use of asymmetric multi-cores as a solution to benefit by the asymmetry and tackle the power wall when running scientific applications.
+Our study is thoroughly stressing such a platform to evaluate its maturity of running high processing parallel applications like PARSEC.
+A more analytical reasoning for working on this platform with these kinds of applications can be found in section 1 of the paper.
+
+Apart from stressing out the asymmetric system, our work finds the optimal way of utilizing this system.
+We consider that the GTS approach is the most sophisticated dynamic scheduling approach on the market.
+To our knowledge, this is the only commercially available dynamic job scheduler that is provided by ARM (thanks to Linaro) in order to offer performance and energy efficiency.
+Our findings show that task based programming models actually achieve better results than a product that is used on every single device with this architecture.
+Moreover, we demonstrate that the addition of (at least one) little core to a homogeneous big-core system degrades system's performance even if the number of cores is increasing.
+The commercially approved GTS dynamic scheduler does not manage to increase performance and effectively utilize the little cores.
+We prove that the task-based approach is able to constantly increase performance and keep energy stable and we consider this a novel insight that does not appear in prior works.
+
+Surprisingly, none of the reviewers mentioned about our contribution in the exploitation of assistant cores for the runtime activity.
+The findings of this section propose modifications on the task-based approach so that one core is devoted for the execution of the sequential codes and of the runtime overheads.
+This part of the paper shows that applications with high sequential code regions benefit by executing them on a big core, while most of the applications benefit when the sequential code is executed on the first available core of the system.
+
+To conclude, we consider that this paper is a valuable piece of work that will help researchers in building and utilizing the future asymmetric multi-core systems.
+Our contributions and insights are not provided by previous works since in our work we use the real hardware, with real applications and existing state of the art scheduling approaches.
+We believe that our paper clearly shows the performance and energy trade-off in such systems and what scheduling approach should be chosen.
+
+
+
+
+
+%Recent studies in computer science show that homogeneous multi-cores have very high energy consumption.
+%This is the reason why researchers are focusing on developing asymmetric architectures that could execute 
+%all kinds of applications with less energy consumption.
+%This is the main reason of the high interest in such architectures and why research is towards experiments of such applications on these systems.
+
+par3: analyze the difference of the insights compared to other papers mentioned in the reviews. (search and check the other papers insights and explain...)
+... check the ref [39]
+
+par4: answer questions 3 and 4
+We consider that the GTS approach is the most sophisticated dynamic scheduling approach on the market.
+To our knowledge, this is the only commercially available dynamic job scheduler that is provided by ARM 
+(thanks to Linaro) in order to offer performance and energy efficiency.
+This fact makes the results interesting because we find that task based programming models actually 
+achieve better results than a product that is used on every single device with this architecture.
+GTS leads to lower utilization than task-based because of the granularity.
+It is more efficient to schedule fine-grained tasks rather than coarse-grain threads.
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+However we believe that the presentation of our paper did not help to show the novel parts of this work.
+-- mention about runtime thread etc... ---
+
+For novelty-findings complaints:
+Also, the main finding of this paper is that the state-of-the-art heterogeneous dynamic scheduler GTS is not actually the best solution for such systems.
+However this is the scheduler used in every single device with the specific architecture nowadays.
+Moreover, the addition of little cores to a homogeneous system causes GTS scheduler to perform poorly, which should not be the case.
+On the other hand, task-based programming models constantly improve performance while adding little cores to the system.
+To our knowledge, there is no other study that discovers this scenario and how the GTS scheduler behaves in such cases.
+
+For complaint6:
+Recent studies in computer science show that homogeneous multi-cores have a very high energy consumption.
+This is the reason why researchers are focusing on developing asymmetric architectures that could execute all kinds of applications with less energy consumption.
+This is the main reason we need this platform and our research is towards this area.
+
+For Question4:
+We consider that the GTS approach is the most sophisticated dynamic scheduling approach on the market.
+To our knowledge, this is the only commercially available dynamic job scheduler that is provided by ARM (thanks to Linaro) in order to offer performance and energy efficiency.
+This fact makes the results interesting because we find that task based programming models actually achieve better results than a product that is used on every single device with this architecture.
+
+For Question3:
+GTS leads to lower utilization than task-based because of the granularity.
+It is more efficient to schedule fine-grained tasks rather than coarse-grain threads.
+
+
+Our strengths:
+However, we believe that a thorough analysis of such a system is missing from the literature.
+This is the reason that our study includes a real hardware, performance, power and energy measurements as well as 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

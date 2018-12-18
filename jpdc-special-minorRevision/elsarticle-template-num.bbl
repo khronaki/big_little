@@ -1,0 +1,251 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Kogge_Exascale_TR08}
+P.~Kogge, K.~Bergman, S.~Borkar, D.~Campbell, W.~Carson, W.~Dally, M.~Denneau,
+  P.~Franzon, W.~Harrod, K.~Hill, Others, {Exascale Computing Study: Technology
+  Challenges in Achieving Exascale Systems}, Tech. rep., University of Notre
+  Dame, CSE Dept. (2008).
+
+\bibitem{CompCores}
+A.~Lukefahr, S.~Padmanabha, R.~Das, F.~M. Sleiman, R.~Dreslinski, T.~F.
+  Wenisch, S.~Mahlke, Composite cores: Pushing heterogeneity into a core, in:
+  MICRO, 2012, pp. 317--328.
+
+\bibitem{hetServers}
+Y.~Wu, C.~Gillan, U.~Minhas, S.~Barbhuiya, A.~Novakovic, K.~Tovletoglou,
+  G.~Tzenakis, H.~Vandierendonck, G.~Karakonstantis, D.~Nikolopoulos,
+  Heterogeneous servers based on programmable cores and dataflow engines, in:
+  EnESCE, 2017.
+
+\bibitem{Kumar:ISCA2004}
+R.~Kumar, D.~M. Tullsen, P.~Ranganathan, N.~P. Jouppi, K.~I. Farkas, Single-isa
+  heterogeneous multi-core architectures for multithreaded workload
+  performance, in: ISCA, 2004, pp. 64--75.
+
+\bibitem{Balakrishnan:ISCA2005}
+S.~Balakrishnan, R.~Rajwar, M.~Upton, K.~K. Lai, The impact of performance
+  asymmetry in emerging multicore architectures, in: ISCA, 2005, pp. 506--517.
+
+\bibitem{Pangaea}
+H.~Wong, A.~Bracy, E.~Schuchman, T.~M. Aamodt, J.~D. Collins, P.~H. Wang,
+  G.~Chinya, A.~K. Groen, H.~Jiang, H.~Wang, Pangaea: A tightly-coupled ia32
+  heterogeneous chip multiprocessor, in: PACT, 2008.
+
+\bibitem{ARMV8}
+M.~A. Laurenzano, A.~Tiwari, A.~Cauble-Chantrenne, A.~Jundt, W.~A. Ward,
+  R.~Campbell, L.~Carrington, Characterization and bottleneck analysis of a
+  64-bit armv8 platform, in: ISPASS'16, 2016, pp. 36--45.
+
+\bibitem{Suleman:APLOS2009}
+M.~A. Suleman, O.~Mutlu, M.~K. Qureshi, Y.~N. Patt, Accelerating critical
+  section execution with asymmetric multi-core architectures, in: ASPLOS, 2009,
+  pp. 253--264.
+
+\bibitem{Fedorova2009}
+A.~Fedorova, J.~C. Saez, D.~Shelepov, M.~Prieto, {Maximizing Power Efficiency
+  with Asymmetric Multicore Systems}, Communications of the ACM 52~(12).
+
+\bibitem{Greenhalgh2011}
+P.~Greenhalgh, {big.LITTLE Processing with ARM Cortex-A15 \& Cortex-A7}, ARM
+  White Paper.
+
+\bibitem{Joao:ASPLOS2012}
+J.~A. Joao, M.~A. Suleman, O.~Mutlu, Y.~N. Patt, Bottleneck identification and
+  scheduling in multithreaded applications, in: ASPLOS, 2012.
+
+\bibitem{Joao:ISCA2013}
+J.~A. Joao, M.~A. Suleman, O.~Mutlu, Y.~N. Patt, Utility-based acceleration of
+  multithreaded applications on asymmetric {CMPs}, in: ISCA, 2013, pp.
+  154--165.
+
+\bibitem{ARM4HPC_SC13}
+N.~Rajovic, P.~M. Carpenter, I.~Gelado, N.~Puzovic, A.~Ramirez, M.~Valero,
+  {Supercomputing with Commodity CPUs: Are Mobile SoCs Ready for HPC?}, in: SC,
+  2013.
+
+\bibitem{PARSEC3}
+X.~Zhan, Y.~Bao, C.~Bienia, K.~Li, Parsec3.0: A multicore benchmark suite with
+  network stacks and splash-2x, SIGARCH Comput. Archit. News 44~(5) (2017)
+  1--16.
+
+\bibitem{Ayguade:TPDS2009}
+E.~Ayguad{\'e}, N.~Copty, A.~Duran, J.~Hoeflinger, Y.~Lin, F.~Massaioli,
+  X.~Teruel, P.~Unnikrishnan, G.~Zhang, The design of {OpenMP} tasks, IEEE TPDS
+  20~(3) (2009) 404--418.
+
+\bibitem{OpenMP4.0:Manual2013}
+{OpenMP} architecture review board: Application program interface (2013).
+
+\bibitem{OmpSs_PPL11}
+A.~Duran, E.~Ayguad\'{e}, R.~M. Badia, J.~Labarta, L.~Martinell, X.~Martorell,
+  J.~Planas, {Ompss: a Proposal for Programming Heterogeneous Multi-Core
+  Architectures.}, Parallel Processing Letters 21.
+
+\bibitem{vectorMulticore}
+B.~Ren, S.~Krishnamoorthy, K.~Agrawal, M.~Kulkarni, Exploiting vector and
+  multicore parallelism for recursive, data- and task-parallel programs, in:
+  PPoPP '17, New York, NY, USA, 2017, pp. 117--130.
+
+\bibitem{Bauer.2012.SC}
+M.~Bauer, S.~Treichler, E.~Slaughter, A.~Aiken, Legion: Expressing locality and
+  independence with logical regions, in: SC, 2012.
+
+\bibitem{rollback}
+K.~Dichev, H.~Jordan, K.~Tovletoglou, T.~Heller, D.~Nikolopoulos,
+  G.~Karakonstantis, C.~Gillan, Dependency-aware rollback and
+  checkpoint-restart for distributed task-based runtimes, 2017.
+
+\bibitem{Vandierendonck:PACT2011}
+H.~Vandierendonck, G.~Tzenakis, D.~S. Nikolopoulos, A unified scheduler for
+  recursive and task dataflow parallelism, in: PACT, 2011.
+
+\bibitem{Vandierendonck:Hyperq}
+H.~Vandierendonck, K.~Chronaki, D.~S. Nikolopoulos, Deterministic scale-free
+  pipeline parallelism with hyperqueues, in: SC, 2013.
+
+\bibitem{spawn}
+X.~Tang, A.~Pattnaik, H.~Jiang, O.~Kayiran, A.~Jog, S.~Pai, M.~Ibrahim, M.~T.
+  Kandemir, C.~R. Das, Controlled kernel launch for dynamic parallelism in
+  gpus, in: HPCA'17, 2017, pp. 649--660.
+
+\bibitem{samsung}
+H.~Chung, M.~Kang, H.-D. Cho, {Heterogeneous Multi-Processing Solution of
+  Exynos 5 Octa with ARM big.LITTLE Technology}, Tech. rep., {Samsung
+  Electronics Co., Ltd.} ({2013}).
+
+\bibitem{GWENAPP}
+L.~Gwennap, {Cortex-A75 Has DynamIQ Debut, Microprocessor Report} (2017).
+
+\bibitem{Juno}
+{ARM}, {Juno ARM Development Platform}.
+
+\bibitem{MPR_A53}
+K.~Krewell, \href{www.mpronline.com}{Cortex-{A53 is ARM}'s next little thing}
+  (2012).
+\newline\urlprefix\url{www.mpronline.com}
+
+\bibitem{MPR_A57}
+J.~Bolaria, \href{www.mpronline.com}{Cortex-{A57} extends {ARM}'s reach}
+  (2012).
+\newline\urlprefix\url{www.mpronline.com}
+
+\bibitem{TRM_A7}
+ARM,
+  \href{http://infocenter.arm.com/help/topic/com.arm.doc.ddi0464d/DDI0464D_cortex_a7_mpcore_r0p3_trm.pdf}{Cortex-{A7
+  MPCore}, revision: r0p3} (2011).
+\newline\urlprefix\url{http://infocenter.arm.com/help/topic/com.arm.doc.ddi0464d/DDI0464D_cortex_a7_mpcore_r0p3_trm.pdf}
+
+\bibitem{MPR_A15}
+J.~Turley, \href{www.mpronline.com}{Cortex-{A15} eagle flies the coop} (2011).
+\newline\urlprefix\url{www.mpronline.com}
+
+\bibitem{TRM_A15}
+ARM,
+  \href{http://infocenter.arm.com/help/topic/com.arm.doc.ddi0438c/DDI0438C_cortex_a15_r2p0_trm.pdf}{Cortex-{A15}
+  technical reference manual, revision: r2p0} (2011).
+\newline\urlprefix\url{http://infocenter.arm.com/help/topic/com.arm.doc.ddi0438c/DDI0438C_cortex_a15_r2p0_trm.pdf}
+
+\bibitem{coolingAware}
+T.~Cao, W.~Huang, Y.~He, M.~Kondo, Cooling-aware job scheduling and node
+  allocation for overprovisioned hpc systems, in: IPDPS'17, 2017, pp. 728--737.
+
+\bibitem{IKS}
+{Mathieu Poirier}, {In Kernel Switcher: A solution to support ARM's new
+  big.LITTLE technology}, {Embedded Linux Conference 2013} (2013).
+
+\bibitem{Zuckerman:EXADAPT2011}
+S.~Zuckerman, J.~Suetterlein, R.~Knauerhase, G.~R. Gao, Using a {``Codelet''}
+  program execution model for exascale machines: Position paper, in: EXADAPT,
+  2011.
+
+\bibitem{Bienia:PhD2011}
+C.~Bienia, Benchmarking modern multiprocessors, Ph.D. thesis, Princeton
+  University (2011).
+
+\bibitem{Chasapis:TACO2016}
+D.~Chasapis, M.~Casas, M.~Moreto, R.~Vidal, E.~Ayguade, J.~Labarta, M.~Valero,
+  {PARSECSs: Evaluating the Impact of Task Parallelism in the PARSEC Benchmark
+  Suite}, TACO.
+
+\bibitem{ARM}
+B.~Jeff, {big.LITTLE Technology Moves Towards Fully Heterogeneous Global Task
+  Scheduling}, ARM White Paper.
+
+\bibitem{Kumar_micro_2003}
+R.~Kumar, K.~I. Farkas, N.~P. Jouppi, P.~Ranganathan, D.~M. Tullsen, Single-isa
+  heterogeneous multi-core architectures: The potential for processor power
+  reduction, in: MICRO, 2003, pp. 81--92.
+
+\bibitem{Morad_area_based}
+T.~Y. Morad, U.~C. Weiser, A.~Kolodny, M.~Valero, E.~Ayguade, Performance,
+  power efficiency and scalability of asymmetric cluster chip multiprocessors,
+  IEEE Comput. Archit. Lett. 5~(1) (2006) 4--17.
+
+\bibitem{Koufaty_bias}
+D.~Koufaty, D.~Reddy, S.~Hahn, Bias scheduling in heterogeneous multi-core
+  architectures, in: EuroSys, 2010, pp. 125--138.
+
+\bibitem{Cong_quickIA}
+J.~Cong, B.~Yuan, Energy-efficient scheduling on heterogeneous multi-core
+  architectures, in: ISLPED, 2012, pp. 345--350.
+
+\bibitem{quickIA}
+N.~Chitlur, G.~Srinivasa, S.~Hahn, P.~Gupta, D.~Reddy, D.~Koufaty, P.~Brett,
+  A.~Prabhakaran, L.~Zhao, N.~Ijih, S.~Subhaschandra, S.~Grover, X.~Jiang,
+  R.~Iyer, Quickia: Exploring heterogeneous architectures on real prototypes,
+  in: HPCA, 2012, pp. 1--8.
+
+\bibitem{VanCraeynest_fairness}
+K.~Van~Craeynest, S.~Akram, W.~Heirman, A.~Jaleel, L.~Eeckhout, {Fairness-aware
+  Scheduling on single-ISA Heterogeneous Multi-cores}, in: PACT, 2013.
+
+\bibitem{VanCraeynest_PIE}
+K.~Van~Craeynest, A.~Jaleel, L.~Eeckhout, P.~Narvaez, J.~Emer, Scheduling
+  heterogeneous multi-cores through performance impact estimation (pie), in:
+  ISCA, 2012, pp. 213--224.
+
+\bibitem{Rodrigues_thread_scheduling}
+R.~Rodrigues, A.~Annamalai, I.~Koren, S.~Kundu, Scalable thread scheduling in
+  asymmetric multicores for power efficiency, in: SBAC-PAD, 2012, pp. 59--66.
+
+\bibitem{EAS}
+M.~Anderson, {Scheduler Options in big.LITTLE Android Platforms}.
+
+\bibitem{EAS_Linux}
+{Ian Rickards and Amit Kucheria}, {Energy Aware Scheduling (EAS) progress
+  update},
+  \url{https://www.linaro.org/blog/core-dump/energy-aware-scheduling-eas-progress-update}
+  (2015).
+
+\bibitem{Hetero95}
+M.~A. Iverson, F.~\"{O}zg\"{u}ner, G.~J. Follen, {Parallelizing Existing
+  Applications in a Distributed Heterogeneous Environment}, in: HCW, 1995.
+
+\bibitem{Hetero93}
+G.~Sih, E.~Lee, {A Compile-Time Scheduling Heuristic for
+  Interconnection-Constrained Heterogeneous Processor Architectures}, IEEE TPDS
+  4~(2).
+
+\bibitem{Dup09}
+A.~Agarwal, P.~Kumar, {Economical Duplication Based Task Scheduling for
+  Heterogeneous and Homogeneous Computing Systems}, in: IACC, 2009.
+
+\bibitem{Chronaki:ICS2015}
+K.~Chronaki, A.~Rico, R.~M. Badia, E.~Ayguad{\'{e}}, J.~Labarta, M.~Valero,
+  Criticality-aware dynamic task scheduling for heterogeneous architectures,
+  in: ICS, 2015, pp. 329--338.
+
+\bibitem{HEFT}
+H.~Topcuoglu, S.~Hariri, M.-Y. Wu, {Performance-Effective and Low-Complexity
+  Task Scheduling for Heterogeneous Computing}, IEEE TPDS 13~(3).
+
+\bibitem{LDCP}
+M.~Daoud, N.~Kharma, {Efficient Compile-Time Task Scheduling for Heterogeneous
+  Distributed Computing Systems}, in: ICPADS, 2006.
+
+\end{thebibliography}

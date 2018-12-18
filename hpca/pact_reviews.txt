@@ -1,0 +1,116 @@
+===========================================================================
+                           PACT 2016 Review #23A
+---------------------------------------------------------------------------
+Paper #23: Exploiting Asymmetric Multi-Core Processors with Flexible System
+           Sofware
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+Asymmetric multi-core system such as the ARM big.LITTLE architecture has been successfully deployed in mobile SOC's for improved performance and reduced power consumption. The authors evaluated the performance and power impact of such architecture on HPC workloads using the PARSEC benchmark suite.
+
+The authors discovered that statically scheduled code performs poorly on such a system when hybrid set of big/little cores are activated. This is interesting as the authors pointed out but is not surprising because the static schedule was written for architecture with symmetric performance among the cores.
+
+The authors subsequently evaluated two dynamic scheduling algorithms: OS level GTS which is aware of the big/little core differences and a parallel task scheduler at the runtime level. The GTS achieved 5.3% average speedups and the runtime task scheduler performed even better with 13% average speedups.
+
+                 Reviewer expertise: 4. I know a lot about this area
+
+                    ===== Strength and Weaknesses =====
+
+The strength of the paper is in using real hardware to evaluate performance of HPC workloads on big.LITTLE architecture while previous works have either focused on mobile workloads or simulated the results.  The results while not surprising, are useful for the research community.
+
+The main weakness is that only 3 scheduling algorithms are compared: static, GTS and runtime dynamic task scheduling, which makes a specific version of runtime dynamic task scheduling looking like a winner without comparing other dynamic task scheduling algorithms, for example, Guided Self-Scheduling that has been known to handle unpredictable load balancing, and task migration which has shown to be an effective OS level load balancing mechanism.
+
+                      ===== Comments to authors =====
+
+Page 2: "For the OS scheduler it takes three additional little cores
+on average to reach the performance obtained with four
+out-of-order cores." This sentence is quite confusing. Do you meant to say that "One has to use a minimum of 3 little cores to get better performance, adding one or two little cores will slow down the static scheduled applications"?
+
+Page 5: Figure 2.  Why only show 5 dots for FACESIM, 4 for FLUID while all the others have 7 dots?  Also, this figure seems to be an orphan because later in the paper, there is no comparison with realized speedups vs. this graph.
+
+VI: Related work: The authors can do better by picking a few related scheduling algorithms in this section and measure the runtime task scheduler against them.
+
+                            Novelty: 2. Incremental improvement
+
+----------------------------------------------------------------------------------------------------------------
+===========================================================================
+                           PACT 2016 Review #23C
+---------------------------------------------------------------------------
+Paper #23: Exploiting Asymmetric Multi-Core Processors with Flexible System
+           Sofware
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper studies different scheduling policies on a big+little core platform running PARSEC.
+
+                 Reviewer expertise: 5. This is my area
+
+                    ===== Strength and Weaknesses =====
+
++ The paper is written well and does a good job of summarizing all of the experiments done.
+- There is really no new insights here. If the objective was a characterization, this is a nice paper. If the objective was to find new insights for energy efficiency or power/perf, then really nothing new to report.
+
+                      ===== Comments to authors =====
+
+The paper is well written and the authors have done a nice job of summarizing the findings from the range of measurements performed running PARSEC on big+little. The major comments on the paper are as follows:
+-- There is really no new insights here. If the objective was a characterization, this is a nice paper. If the objective was to find new insights for energy efficiency or power/perf, then really nothing new to report. 
+-- Why choose a parallel mostly-symmetric workload to run on this architecture? Why not multi-programmed or heterogeneous workloads?
+-- What has this paper highlighted over prior papers in this area? Any new findings?
+
+Overall, I found this paper interesting, but did not end with major new findings as I was hoping.
+
+                            Novelty: 1. Published before or openly
+                                        commercialized
+
+                     ===== Questions for Authors =====
+
+What was the objective? Just a characterization or was there a hypothesis?
+Why not do this experiment with heterogeneous workloads as opposed to embarrassingly parallel workloads?
+What has this paper shown beyond previous experiments with big+little platforms?
+
+--------------------------------------------------------------------------------------------------------------------------
+
+===========================================================================
+                           PACT 2016 Review #23D
+---------------------------------------------------------------------------
+Paper #23: Exploiting Asymmetric Multi-Core Processors with Flexible System
+           Sofware
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper first evaluates the effectiveness of existing parallel applications on asymmetric multi?core systems, which combine both out?of?order and in?order processors in order to allow a system to balance between performance and energy efficiency. After concluding that most current applications are not mature enough to take advantage of such processing systems using only the methods currently implemented by programmers, they evaluate two different methods for solving the load balancing problems: 1.) An OS?based scheduler and 2.) a task?based parallel programming model to dynamically manage load balance at runtime.
+
+                 Reviewer expertise: 4. I know a lot about this area
+
+                    ===== Strength and Weaknesses =====
+
+Strengths:
+The methodology uses actual hardware to obtain results. This greatly increases the reliability of their reported results. 
+
+ The authors included good analysis of many of their application?specific results. They do a good job of addressing and explaining both the general trends of their findings, as well as any specific outliers that they find.
+
+This paper is very thorough when evaluating the different scheduling methods. It uses several different metrics and a wide range of configurations for the asymmetric processor.
+
+Weaknesses:
+This paper does not present any novel approach to the problem, but merely evaluates existing approaches. It merely finds that existing applications are ill?suited for certain scheduling schemes and does not provide an alternative. It would be useful if the authors used their results about applications running on asymmetric multi?core processors in order to offer guidance on future research into optimizing these systems. Without any additional commentary which utilizes the new information the authors bring to the table, this paper seems rather incremental in that it merely characterizes workloads in a slightly better way by either using hardware, more representative benchmarks, or by offering results commenting on power and energy consumption.
+
+                      ===== Comments to authors =====
+
+The main strength of the paper is the thoroughness with which the authors have evaluated the application characteristics. They have presented a comprehensive analysis of the different behaviors of benchmarks in terms of speedup, power, and energy under symmetric little?core clusters, symmetric big?core clusters, and asymmetric combinations of the two. In order to provide direction for future work, it would be interesting if the authors used the data obtained in this paper to hypothesize about possible optimizations to applications vis?à?vis asymmetric multicores. The conclusions of this paper as such only evaluate the optimal core setup for current applications, which it already has determined are suboptimal. Other than that, there are a few areas where clarification could be useful to avoid some confusion about methodology.
+
+There are a couple minor aspects of the paper that should be clarified by the authors. How ae the nine PARSEC benchmarks selected. The only comment on this is to say that they are using nine “representative” benchmarks, but there is no explanation of what the benchmarks are representative of.
+
+Second is the fact that the Context Switching and In?Kernel Switch approaches are discarded completely. If they are not even evaluated, then it seems that devoting any time to explaining them, only to drop them in favor of GTS, is a waste of time.
+
+Finally, it is explained that the task?based implementation seeks to remove application?specific load balancing mechanisms so that those responsibilities can be delegated to the runtime system. Does this mean that GTS uses these application?specific techniques? This is confusing because in Section V.b, you state that applications with these mechanisms are able to use the asymmetric cores better than those without, but then you go on to say that for bodytrack, one of the applications with built?in load balancing techniques, GTS in fact reduces performance. Some additional clarity here would be helpful.
+
+                            Novelty: 2. Incremental improvement
+
+
+
+
+
+

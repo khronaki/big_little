@@ -1,0 +1,124 @@
+In this extensive evaluation of highly parallel applications on an ARM big.LITTLE AMC system 
+%Our findings include the system's behaviour when modifying the asymmetry level as well as changing the scheduling scheme.
+%These results are explained along with the application characteristics which gives another dimension to this study.
+we showed that current implementations of parallel applications using pthreads are not ready to fully utilize an AMC.
+Implementing highly sophisticated parallelization strategies such as parallel pipelines (ferret) to exploit AMCs at the application level requires a significant programming effort and is not applicable to all workloads.
+The built-in GTS heterogeneity-aware OS scheduler only partially mitigates the slowdown of static threading when using both big and little cores.
+%Dynamically-scheduled loops achieve better results by distributing the load as iteration chunks. A task-based implementation of the applications achieves even better results by removing barrier synchronizations in many cases.
+%When adding little cores to a homogeneous system with big cores we showed that scheduling at the application or at the OS level is not able to always utilize the additional little cores. 
+%Contrarily, the task-based approach, due to the dynamic and fine grained scheduling, manages to evenly divide the work to the asymmetric resources.
+Both dynamically-scheduled loop- and task-based versions achieve higher performance with increased utilization which results in increased power. This leads to similar energy consumption as static threading and GTS, which ends up with better results in EDP.
+%In terms of power, the task-based approach keeps the power dissipation stable even if we add little cores to the system, while at the same time performance is increased. 
+%We consider that this is the idea behind such AMC systems and this is a proof that the task-based approach achieves this goal overcoming the GTS scheme.
+%In terms of energy, there is some room for improvement on the task-based approach as on average it consumes approximately 3\% more energy than GTS and 5\% more than static threading on 8 cores.
+%However, the EDP results show that the optimal solution when taking into account both energy and performance is the task-based. 
+
+Overall, GTS and static threading are not suitable solutions to run intensive multithreaded applications on AMCs. Dynamic scheduling is essential to distribute the load across different core types. A loop-based implementation with dynamic scheduling is appropriate when the parallel work granularity is large and the potential imbalance at the tail of the loop is insignificant compared to the overall parallel region duration. A task-based implementation with inter-task dependencies allows removing barriers, which is the preferred solution, especially when the granularity of parallel regions is small.
+
+%Finally, we further explored the available runtime scheduling options.
+%We compared the performance of the task-based approach with two types of loop-based scheduling: static and dynamic. 
+%From our available loop-scheduled applications we can conclude that the loop-dynamic approach can outperform task-based only in the case of coarse grained applications. 
+%For applications that consist of a very high number of small tasks (blackscholes) or with intensive dependencies between them (bodytrack) the task-based approach is the optimal solution. 
+
+
+
+\iffalse 
+%removing conclusion of hpca and rewriting it...
+AMCs are a successful architectural solution for mobile and supercomputing systems. 
+Our evaluation shows how they perform for other domains and how the several existing execution models for AMCs behave in terms of performance and power. 
+
+We compared the statically-threaded out-of-the-box implementation, the GTS OS scheduler, and dynamic scheduling at the runtime level, both for OpenMP loops and a task-based implementation. 
+When using all the cores in the system, it stands out that the task-based better balances the load and avoids having big cores waiting for little cores to reach synchronization points.
+
+We confirm that the out-of-the-box implementation, for most applications, does not effectively utilize the asymmetric system.
+%does not work for most applications. 
+This confirms the well-known problem of load imbalance when evenly distributing work among diverging core types. 
+On average, static threading, when using eight cores, is 12\% less efficient than when using just four big cores.
+%performs 12\% worse will all cores than with just big cores.
+An exception is the case of ferret, due to its pipelined parallelism that helps on the effective utilization of the little cores when they are added to the system.
+%makes the
+%addition of little cores to provide additional throughput without imbalances.
+
+The OS scheduler partially increases load balance. 
+However, as it migrates threads based on CPU utilization, its behaviour is mostly reactive. 
+It migrates threads when they become inactive and, at that point, the thread has already been spinning for some time. 
+Using all cores in the system is 5\% better than using big cores only.
+
+Finally, using dynamic scheduling on OpenMP work-sharing constructs reduces load imbalance and helps to better exploit all resources.
+Task-based parallelism further reduces imbalance achieving 13\% performance uplift with all cores. 
+The fundamental factors for this improvement are the removal of fork-join schemes and barriers
+thanks to inter-task dependencies.
+
+These solutions provide different levels of application refactoring. 
+Our performance and power discussion and quantification becomes a useful resource to select the right execution model for a given performance-effort point and satisfactorily exploit AMCs. 
+\fi
+%In this paper we examine the maturity of asymmetric multi-core systems to support emerging parallel applications, showing an extensive and comprehensive evaluation in terms of performance, power, energy and EDP. We compare three major scheduling approaches each of them taking place at a different level of the software stack: \emph{Static threading} for application-level parallelism, \emph{GTS} for OS level parallelism, and \emph{Task-based} that takes place at the runtime level.
+
+%An interesting finding of this work is that out-of-the-box emerging parallel applications are not ready to exploit the energy efficient features of asymmetric multi-cores. Many applications assume that the underlying hardware will be symmetric and suffer from load imbalance in the presence of asymmetry. Only applications that implement advanced load balancing techniques can benefit from the enhanced performance and energy efficiency of these systems.
+%
+%A second important finding of this work is that, depending on the target metric that we want to achieve, asymmetric multi-cores offer different possibilities and tradeoffs. In a system with four \emph{big} and four \emph{little} cores, we evaluated seven different combinations of cores with the described three different scheduling policies, achieving the following conclusions:
+%\begin{itemize}
+% \item In terms of \emph{power}, the best solution is to use a symmetric configuration with only little cores, as they dissipate much less power than the big cores.
+% \item In terms of \emph{performance}, if the system software stack does not provide a dynamic scheduler at some level, the best solution is to use the symmetric multi-core with four big cores. However, if a dynamic scheduler is available at application, runtime or OS level, the best configuration turns to be the asymmetric multi-core with four big and four little cores. The runtime system approach delivers the highest performance in this configuration, reaching a 13\% improvement over the symmetric configuration.
+% \item In terms of \emph{energy}, the best configuration is again a symmetric multi-core with four little cores. The enhanced performance that big cores deliver does not compensate the extra power they dissipate.
+% \item Finally, in terms of \emph{energy-efficiency}, we show that the best EDP results are obtained in the asymmetric configuration with four big and four little cores and the dynamic scheduler in the runtime system.
+%\end{itemize}
+%To conclude, in energy-limited environments, it is clear that a multi-core with only little cores is the best solution. However, if we want to reach higher performance and energy efficiency, asymmetric multi-cores offer an interesting solution when combined with a dynamic scheduler in the runtime system.
+
+
+% \textbf{Kallia:: First draft}
+% In this paper we examined the maturity of the asymmetric systems to support emerging parallel applications in terms of performance, energy and power.
+% We compared three major scheduling approaches each of them taking place at a different level of the software stack: \emph{Static threading} for application-level parallelism, \emph{GTS} for operating system level parallelism and \emph{Task-based} that takes place at runtime level.
+% Moreover, we investigated seven different combinations of big and little cores and we showed the impact of adding little cores on a homogeneous system with big cores.
+% Finally, we presented a detailed power analysis of streamcluster and an evaluation of the three possibilities regarding the main thread migration on a task-based programming model.
+% 
+% Our conclusions can be summarized in two cases; 
+% first, is the conclusions for a constant number of cores, and then the conclusions for an increasing number of cores.
+% For a static number of cores, the most efficient configuration in terms of performance, would be a homogeneous system with big cores.
+% On the other hand, a homogeneous system with little cores would be the most energy efficient set-up of the system.
+% For these homogeneous systems all the approaches achieve the same performance.
+% If we introduce asymmetry and we make half of the cores big and half of them little, the optimal way to perform scheduling is the \emph{Task-based} approach, due to the dynamic fine-grained parallelism. 
+% At the same time this approach is the less energy efficient one on the asymmetric system.
+% However, if we take into account performance and energy consumption (namely EDP results) the best combination of the two is given by the use of the \emph{Task-based} approach.
+% 
+% The second part of the results of this paper focuses on the efficient utilization of the little cores.
+% Specifically, we explored the performance, energy, power and EDP improvements when adding four little cores on a system that initially consists of four big cores.
+% We observed that the \emph{Static threading} approach fails to efficiently utilize the assistant-little cores since the available parallelized applications assume a homogeneous system and divide the workload on equal units.
+% The \emph{GTS} and \emph{Task-based} approaches take more advantage of the little cores since their dynamic approach is more flexible.
+% As the \emph{Task-based} approach works on tasks rather than threads (compared to \emph{GTS}) it provides higher flexibility, thus it achieves an additional 10\% performance over \emph{GTS}.
+% All the approaches manage to reduce total energy while keeping the power constant.
+% Taking into account both energy and performance (EDP), the optimal approach is the \emph{Task-based} and the most efficient system configuration is when adding four little cores to the homogeneous system with four big cores. 
+% 
+% From the power analysis, we found that the \emph{Task-based} approach utilizes the little cores better than \emph{GTS} and both of them use little cores in a higher intensity than the \emph{Static threading}.
+% In the last part we showed that for a task-based programming model the effect of changing the migration of the main thread makes only slight differences and this slight improvements of slowdowns are mostly application-specific.
+% On average all the main thread migration options achieve the same results.
+
+\iffalse
+
+
+Our findings answer these questions:
+1. which is the best configuration of big/little cores
+-for performance?
+-for power?
+-for both?
+2. which scheduling approach is the best?
+3. where should the main thread migrate?
+
+
+
+The advantages of asymmetric multi-cores for mobile applications have been proved in the past. 
+In this paper, we showed that these systems can also be useful for emerging parallel applications and evaluated three possible ways of utilizing them. 
+We found that for a constant number of four cores, the most efficient configuration in terms of performance, power and energy is a homogeneous system consisted of big cores.
+
+If the number of cores remains constant, the best configuration in terms of performance, power and energy is always homogeneous. 
+However, asymmetric configurations offer an intermediate solution that can be interesting in some scenarios. Furthermore, if the number of big cores remains constant, having an increasing number of little cores in an asymmetric multi-core can help increasing performance while reducing final energy. 
+
+However, more advanced techniques are required at the application, runtime or OS levels to balance the load across all cores and fully exploit the available resources. Relying on the programmer to develop an application that adapts to asymmetric multi-cores complicates the design and deployment of the application. For this reason, many current parallel applications do not adapt well to these systems. OS-based dynamic schedulers can help mitigating the problems of such applications. However, our results suggest that it is critical to use a flexible parallel programming model to allow the runtime system layer to make decisions dynamically. Having application-agnostic mechanisms to properly balance the load or to perform heterogeneity-aware domain decomposition (i. e. assign more load to more powerful hardware components), allows to fully exploit the potential of asymmetric multi-core processors.
+
+When applying these techniques, average performance benefits of XX\% are obtained, with XX\% reduction in final energy consumption. Taking into account these results, we envision that future desktop and server processors will incorporate heterogeneous cores in their designs.
+
+
+% Also, all these optimizations must be carried out without increasing the programming complexity as our techniques would be hardly applicable otherwise.
+% The runtime system has the responsibility of optimally mapping the tasks to the available cores taking into account hardware components' heterogeneity and availability.
+
+\fi

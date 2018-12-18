@@ -1,0 +1,183 @@
+\iffalse
+\mm{I don't think we have to focus so much in schedulers. I would also add other things, like HW support, runtime extensions, or application modifications for heterogeneous systems.}
+
+\mm{Missing refs: the CATS ICS 2015~\cite{Chronaki:ICS2015}, all OmpSs support for GPU+CPU systems and other heterogeneous platforms~\cite{Bueno:IPDPS2012,Planas:IPDPS2013,Planas:ICCS2015}.} 
+
+\mm{Also missing all the papers from Onur Mutlu on Asymmetric Multicores}
+
+\mm{Maybe we can include some performance characterization of real machines. At BSC, we have a good paper track on this: POWER5 decode priorities (ISCA 2005), POWER7 prefetcher (PACT), UltraSPARC T1 (MICRO, Petar), etc.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+
+%\mm{The past work has predominantly considered sequential applications and has mostly been simulation-based, which limits the size of possible workloads and the ability to accurately measure performance and energy. We found that our conclusions differ as a result of these differences in experimental methods.}
+
+There has been a lot of studies on asymmetric multi-core systems. Some works focus on the design of the system, while other works explore the challenges that appear in efficiently utilizing such a heterogeneous system.
+Kumar et al~\cite{Kumar_micro_2003} present the idea of an asymmetric multi-core system and proposed a feedback-based way to dynamically migrate processes among the different cores. 
+%Their approach led to energy savings but at the cost of performance degradation. 
+To determine the core that most effectively executed a workload, Kumar et al~\cite{Kumar:ISCA2004} proposed the use of sampling. The proposed method minimizes the execution time of each single thread and increases performance. Other studies focused on the pipeline design of such asymmetric systems and the area that should be devoted to each component in the system~\cite{Balakrishnan:ISCA2005, Morad_area_based}. Other works on asymmetric systems focus on hardware support for critical section detection~\cite{Suleman:APLOS2009} or bottleneck detection~\cite{Joao:ASPLOS2012,Joao:ISCA2013}.
+%Other authors proposed hardware support to detect critical sections of a parallel application and schedule the most critical ones on the big cores~\cite{Suleman:APLOS2009, Joao:ASPLOS2012,Joao:ISCA2013}. 
+These approaches are orthogonal to the approaches evaluated in this paper and could benefit from them to further improve the final performance of the system.
+
+Process scheduling on asymmetric systems is one of the most challenging topics in this area of study.
+Bias scheduling~\cite{Koufaty_bias} is an OS scheduler that characterizes the running 
+threads according to their memory or execution intensity. 
+It then schedules the computation intensive threads to the big cores of the system while the memory intensive threads to the little cores of the system.
+The experimental evaluation is done on Intel Xeon processors and the heterogeneous system is emulated by changing the configuration of three out of the four cores of the processor.
+Cong et al propose the Energy-Efficient~\cite{Cong_quickIA} OS scheduler based on energy estimation. The evaluation is performed on the Intel QuickIA~\cite{quickIA} platform that integrates an Intel Xeon with an Atom processor. 
+%Code instrumentation is used to schedule different phases of the application on each processor. However, the separate core and memory subsystems in these architectures incur power and performance overheads for application migration, which makes dynamic mapping ineffective for fine-grained migration
+Van Craeynest et al.~\cite{VanCraeynest_fairness} propose the fairness-aware OS scheduler that 
+focuses on asymmetric multi-core 
+architectures. 
+%They focus on heterogeneous single-ISA architectures and they use some of the applications evaluated in our paper but their research lacks the real heterogeneous system; instead they simulate a heterogeneous processor with big and little cores to estimate performance and fairness (not energy).
+The performance impact estimation (PIE) scheduler~\cite{VanCraeynest_PIE} is based on the impact of MLP and ILP on the overall CPI and focuses on improving performance.
+The scheduler predicts the impact of each different core-type of the system on the MLP, ILP and it assumes hardware support for CPI. 
+%The evaluation of this paper is performed through simulation by mimicking a heterogeneous system like ARM big.LITTLE. Further there are no energy or power measurements.
+Rodrigues et al~\cite{Rodrigues_thread_scheduling} propose a thread scheduling technique that estimates power and performance when deciding to assign a thread to a specific core of the heterogeneous system. 
+%However their evaluation is based on simulated results and not on a real platform. They have info for power.
+Finally, Energy-Aware Scheduling (EAS) is an on-going effort in the Linux community to introduce 
+the energy factor in the OS scheduler~\cite{EAS, EAS_Linux}. It is based on performance and power 
+profiling to set performance and power capacities and let the Linux completely fair scheduler 
+assign slots to processes considering the different core capacities. EAS is not yet part 
+of the Linux kernel and, therefore, GTS is the most sophisticated state of the art scheduling method 
+in production on current big.LITTLE processors.
+
+
+
+
+
+%Van Craeynest et al. [33] proposed the PIE model for heterogeneous multi-core with big out-of-order and small in-order cores. The PIE model uses simple analytical models to predict how core architecture affects exploitable ILP and MLP and its impact on CPI. Scheduling using the PIE model assumes hardware support for computing CPI stacks as well as a few model inputs. The hardware cost is limited to roughly 15 bytes of storage. Again, all of this prior work focused on optimizing system throughput while running multi-program workloads, and none looked into optimizing fairness nor multithreaded application scheduling.
+
+%Moreover, there have been many works for the efficient task scheduling on heterogeneous systems.
+%In the literature there exist numerous dynamic or static scheduling algorithms for heterogeneous multi-cores with comprehensive experimental evaluation.
+
+Similar to OS scheduling approaches there have been many task scheduling approaches that are directed for utilizing asymmetric systems.
+The Levelized Min Time~\cite{Hetero95} heuristic first clusters the tasks that can execute in parallel (\textit{levels}) and then it assigns priorities to them, according to their execution time.
+The Dynamic Level Scheduling algorithm~\cite{Hetero93} assigns the tasks to the processors according to their \textit{dynamic level} (DL).
+% which is \textit{DL(n) = SL(n) - earliest exec time(n)}. 
+%Random graph generators on simulated heterogeneous processors. 
+Heterogeneous Economical Duplication (HED)~\cite{Dup09} duplicates the tasks in order to be executed on more than one cores but it then
+%performs task duplication in an economical manner as it 
+removes the redundant duplicates if they do not affect the makespan. 
+CATS scheduler~\cite{Chronaki:ICS2015} is designed for asymmetric systems like big.LITTLE and dynamically schedules the \textit{critical} tasks to the big cores of the system to increase performance. 
+Topcuoglu et al proposed the Heterogeneous Earliest Finish Time (HEFT) scheduler that statically assigns each task to the processor that will finish it at the earliest possible time. To do so, it keeps records with the task costs for each processor type.
+%The Heterogeneous Earliest Finish Time (HEFT) algorithm \cite{HEFT} maintains a list of tasks sorted in decreasing order of their \textit{upward rank}. At each schedule step, HEFT assigns the task with the highest \textit{upward rank} to the processor that finishes the execution of the task at the earliest possible time. Lack of desktop applications and no mention of real heterogeneous system.
+They also proposed the Critical Path on a Processor (CPOP) algorithm \cite{HEFT} that maintains a list of tasks and statically identifies and schedules the tasks belonging to the critical path  to the processor that minimizes the sum of their execution times. 
+%Critical Path on a Processor (CPOP) algorithm \cite{HEFT} also maintains a list of tasks but, in this case, tasks are sorted decreasingly according to their \textit{upward rank + downward rank}. 
+%The tasks with the highest \textit{upward rank + downward rank} are the tasks that belong to the critical path and these are sent to the \textit{critical path processor} that is the one that minimizes the sum of their execution times. Lack of desktop applications and no mention of real heterogeneous system.
+The Longest Dynamic Critical Path (LDCP) algorithm \cite{LDCP} identifies the tasks that belong to the critical path and schedules them with higher priority.
+
+%computes the critical path at each schedule step by scheduling the tasks with the highest \textit{URank} (upward rank) first. 
+%Every time a task is scheduled, the \textit{computation cost matrix} is updated with the new timing values for the task. 
+
+%More related work can be found in \cite{CrParTree, CrPathDup}
+
+All these works reflect the remarkable research that is taking place on asymmetric systems. 
+However we consider that their experimental evaluation is limited for three main reasons:
+i)~Their experimental evaluation is done through a simulator or emulation of an asymmetric 
+system \cite{Kumar_micro_2003, Kumar:ISCA2004, Morad_area_based, Balakrishnan:ISCA2005, 
+Koufaty_bias, VanCraeynest_fairness, VanCraeynest_PIE, Rodrigues_thread_scheduling, Hetero93, 
+Hetero95, Dup09, Suleman:APLOS2009, Joao:ASPLOS2012,Joao:ISCA2013};
+ii)~The evaluated applications are either random task dependency graph generators or scientific 
+kernels and micro-benchmarks \cite{Hetero93, Chronaki:ICS2015, HEFT, LDCP}.
+iii)~Their evaluation does not focus on power and energy consumption \cite{Kumar:ISCA2004, 
+VanCraeynest_fairness, VanCraeynest_PIE, Hetero93, Hetero95, Chronaki:ICS2015}.
+
+% \begin{itemize}
+%   \item Their experimental evaluation is done through a simulator or emulation of an asymmetric system \cite{Kumar_micro_2003, Kumar:ISCA2004, Morad_area_based, Balakrishnan:ISCA2005, Koufaty_bias, VanCraeynest_fairness, VanCraeynest_PIE, Rodrigues_thread_scheduling, Hetero93, Hetero95, Dup09, Suleman:APLOS2009, Joao:ASPLOS2012,Joao:ISCA2013}.
+%   \item The evaluated applications are either random task dependency graph generators or scientific kernels and micro-benchmarks \cite{Hetero93, Chronaki:ICS2015, HEFT, LDCP}.
+%   \item Their evaluation does not focus on power and energy consumption \cite{Kumar:ISCA2004, VanCraeynest_fairness, VanCraeynest_PIE, Hetero93, Hetero95, Chronaki:ICS2015}.
+% \end{itemize}
+This paper presents a comprehensive evaluation of performance, power and energy on a real asymmetric system of parallel desktop applications.
+Another important point that this paper makes is the impact of using different big and little core counts which is not present in previous works \cite{Cong_quickIA}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This is an evaluation paper of isca 2015: \cite{Nakaike:isca} related to transactional memory
+
+The search for efficient task scheduling on multi-core systems has been intensively studied. Most scheduling heuristics target homogeneous multiprocessors, nevertheless there exists an important number of studies in heterogeneous multiprocessors. In this section we give an overview of different categories of schedulers for heterogeneous systems, we explain some details about schedulers targeting specific systems using compute accelerators and explain details of previous works on criticality-aware schedulers.
+
+%shorter
+%The search for efficient task scheduling on multi-core systems has been intensively studied and an important number of studies target heterogeneous multiprocessors. In this section we make a categorization of schedulers for heterogeneous systems, we explain some details about schedulers targeting specifically compute accelerators and explain details of previous works on criticality-aware schedulers.
+
+\subsection{Schedulers for Heterogeneous Systems}
+
+Previous works on schedulers for heterogeneous systems form four different types of schedulers: listing, clustering, guided-random, and duplication-based schedulers.
+
+%do not consider the criticality of tasks~\cite{Hetero95, Dyn05, Gen07,Chemical, HEFT, Dup09}. These heuristics
+
+Listing schedulers~\cite{List, DCPS, LDCP, HEFT, CrPathDup} have two scheduling stages. In the first stage, each task is given a priority based on the policy defined in each algorithm. In the second stage, tasks are assigned to processors depending on their priorities. Most criticality-aware schedulers fall in this category, and we discuss them in Section~\ref{sec.relwork_critical}. The scheduler proposed in this paper is also a list scheduler.
+
+Clustering schedulers~\cite{Hypertool, DSC, DCPS, Hetero95} first separate tasks into clusters, where each cluster is to be executed on the same processor. During the clustering stage, the algorithm assumes an unlimited number of available processors in the system. If the number of clusters exceeds the number of available cores, the \textit{merging} stage joins multiple clusters so that they match the number of available processors. An example is the Levelized Min Time~\cite{Hetero95} clustering scheduler. This heuristic clusters tasks that can execute in parallel according to their \textit{level} (i.e. sibling nodes in a graph have the same level), and assigns priorities to the tasks in a cluster according to its execution time, (i.e. tasks with the highest execution time have the highest priority). The task-to processor assignment is done in decreasing order of priority.
+
+Guided-random schedulers~\cite{Gen07, Chemical, Dyn05} randomize their schedules by applying policies influenced by other sciences. Genetic algorithms~\cite{Gen07} group tasks into generations and schedule them according to a randomized genetic technique. Chemical reaction algorithms~\cite{Chemical} mimic molecular interactions to map tasks to processors. Some of these guided-random approaches~\cite{Gen07, Chemical} are designed for heterogeneous systems. The scheduler by Page et al.~\cite{Dyn05} enables dynamic scheduling of multiple-sized tasks for heterogeneous systems. However, it does not support dependencies between tasks.
+
+Duplication-based schedulers~\cite{Dup03, Dup11, Dup09} aim to eliminate communication costs between processors by scheduling tasks and their successors on the same processor. If a task has many successors, it is duplicated and executed in multiple cores prior to its successors so all successor tasks get the data from their predecessors with the lowest communication cost. This scheduling potentially introduces redundant duplications of tasks which may lead to bad schedules. The Heterogeneous Economical Duplication scheduler~\cite{Dup09} performs task duplication in an economical manner as it removes the redundant duplicates if they do not affect performance. 
+
+These previous works schedule tasks statically and assume the prior knowledge of the task execution times on the different processor types in the heterogeneous system.
+
+\subsection{Schedulers for Compute Accelerators}
+
+The schedulers in the previous section target the scheduling of generic TDGs on generic heterogeneous architectures. In this section we cover schedulers that target specific systems with compute accelerators. These works are more focused on the scheduling of tasks on the target platform based on the abstractions provided by the corresponding mixture of programming models for the general-purpose processors and the compute accelerators in the system.
+
+Most heterogeneous systems with compute accelerators nowadays combine general-purpose CPUs and GPU compute accelerators. There is a set of programming models providing abstractions to ease the development of applications on these platforms. OmpSs~\cite{OmpSs_PPL11, OmpSs} offers this abstraction by allowing multiple implementations of a given task to be executed on different processing units~\cite{Planas:IPDPS2013}. The scheduler then assigns the execution of a task to the best resource according to its earliest finish time. Another case is StarPU~\cite{starpu}, a library that offers runtime heterogeneity support and provides priority schedulers for task-to-processor allocation. AHP~\cite{AHP} is another framework that generates software pipelines for heterogeneous systems and schedules tasks to their earliest executor, based on profiling information gathered prior to runtime.
+
+None of these works, however, take into account the criticality of tasks regarding task dependencies, but they rather focus on the earliest execution time of individual tasks on the processor types in the specific system configuration.
+
+\subsection{Criticality-Aware Schedulers}
+\label{sec.relwork_critical}
+
+Several previous works propose scheduling heuristics that focus on the critical path in a TDG to reduce total execution time~\cite{DCPS, LDCP, HEFT, CrPathDup}. To identify the tasks in the critical path, most of these works use the concept of \textit{upward rank} and \textit{downward rank}. The upward rank of a task is the maximum sum of computation and communication cost of the tasks in the dependency chains from that task to an exit node in the graph. The downward rank of a task is the maximum sum of computation and communication cost of the tasks in the dependency chain from an entry node in the graph up to that task. Each task has an upward rank and downward rank for each processor type in the heterogeneous system, as the computation and communication costs differ across processor types.
+
+The Heterogeneous Earliest Finish Time (HEFT) algorithm~\cite{HEFT} maintains a list of tasks sorted in decreasing order of their upward rank. At each schedule step, HEFT assigns the task with the highest upward rank to the processor that finishes the execution of the task at the earliest possible time. Another work is the Longest Dynamic Critical Path (LDCP) algorithm~\cite{LDCP}. LDCP also statically schedules first the task with the highest upward rank on every schedule step. The difference between LDCP and HEFT is that LDCP updates the computation and communication costs on multiple processors of the scheduled task by the computation and communication cost in the processor to which it was assigned.
+
+The Critical-Path-on-a-Processor (CPOP) algorithm~\cite{HEFT} also maintains a list of tasks sorted in decreasing order as in HEFT, but in this case it is ordered according to the addition of their \textit{upward rank} and \textit{downward rank}. The tasks with the highest \textit{upward rank + downward rank} belong to the critical path. On each step, these tasks are statically assigned to the processor that minimizes the critical-path execution time.
+
+%The drawback of static listing algorithms is the static priority assignment can lead to wrong schedules at runtime~\cite{DCP}. 
+
+The main weaknesses of these works are that (a) they assume prior knowledge of the computation and communication costs of each individual task on each processor type, (b) they operate statically on the whole dependency graph, so they do not apply to dynamically scheduled applications in which only a partial representation of the dependency graph is available at a given point in time, and (c) most of them use randomly-generated synthetic dependency graphs that are not necessarily representative of the dependencies in real workloads.
+
+%These algorithms assume the prior knowledge of the execution time of each task in the task dependency graph. Moreover, they use static scheduling, namely the computation of the critical path and task-to-processor allocation are decided before the execution of the program. This can lead to wrong predictions of the critical path which, in practice, changes during runtime.
+
+\fi
+

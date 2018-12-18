@@ -1,0 +1,43 @@
+We are thankful to the reviewers for their valuable comments. 
+Our work focuses on the examination of the new mobile-based asymmetric systems for their use in the next generation multi-cores. As the main challenge of the future multi-core system design is energy efficiency, many researchers are pushing towards the use of the energy efficient asymmetric multi-cores to build such systems and tackle the power wall. However, it is not yet known whether these architectures are ready to be used for running scientific applications. This gap is filled by our work that cobines these benchmarks with the mobile processor architecture to explore the opportunities of the system and propose the most efficient usage in terms of performance, power and energy.
+
+Our paper addresses the energy results as well as the performance-energy tradeoff by reporting the average EDP (energy-delay product) results. These results show that the task based approach offers the best performance-energy tradeoff compared to the other scheduling approaches. We omit the energy comsumption per benchmark results as we found that it would be more interesting to present the power chart in order to explain the average energy by looking at both performance and power. We consider that the per-benchmark energy chart does not add any insight.
+
+We would like to clarify that the conclusions reported on page 7 (as Reviewer F points) refer to the heterogeneous set-up of the results, which is 2B+2L. In this set up the task based approach outperforms the existing approaches and fluidanimate specificaly, shows 13% improvement over GTS and 77% improvement over static threading.
+
+Moreover, we consider the improvements of the task-based approach significant, as this approach outperforms the existing GTS scheduler by 9 to 23% and the application-based scheduler (static threading approach) by 30 to 49%. This is an important and novel insight for developing the runtime software of the future asymmetric multi-core systems.
+
+We use OmpSs as the appropriate candidate to represent the task-based approach. As the OpenMP is evolving[1][2] (OpenMP4, OpenMP4.5), their recent versions are already using the OmpSs mechanisms (task and dependency tracking directives). Thus we consider that a comparison of the task based approach to a guided or random loop scheduling approaches would not add any insight as this OpenMP version is already outdated. We could easily however add a comparison to the OpenMP, if the reviewers consider essential, to serve as a task-based baseline.
+
+Finally, we would like to thank the reviewers once more for their comments on the improvement of this work. We believe that the community lacks of such thorough and reliable studies on real hardware and we consider that this work serves as a quality and unique representation of the behavior of modern asymmetric systems.
+
+
+[1]OpenMP Application Program Interface, Version 4.0 - July 2013 (http://www.openmp.org/mp-documents/OpenMP4.0.0.pdf)
+[2]OpenMP Application Programming Interface, Version 4.5 November 2015 (http://www.openmp.org/mp-documents/openmp-4.5.pdf)
+
+
+
+==========================  Notes  ===========================
+Reviewer E:
+Why these benchmarks on this processor?
+-It is well known that currently the main challenge for future system designs is energy efficiency. Homogeneous multi-core systems are suffering by high energy consumption and this is the reason why mobile processors are nowadays heterogeneous, as we want the battery to last long. Many researchers are pushing towards the use of asymmetric multi-cores as a solution to tackle the power wall when running scientific applications. Our study is thoroughly stressing such a platform to evaluate its maturity of running high processing parallel applications like PARSEC.
+
+Energy efficiency is not addressed:
+The paper addresses the energy results as well as the performance-energy tradeoff by reporting the average EDP results (energy delay product). These results show that the task based approach offers the best performance-energy tradeoff compared to other approaches.
+
+Obvious conclusion:
+
+
+Reviewer F:
+conclusions of page7 top right seem exaggerated:
+-This sentence refers to the asymmetric set up (2B+2L) in which fluidanimate performs better with the task based approach. 
+
+not enough novelty:
+
+no significant improvement:
+-Improvement of task-based over GTS ranges from 9% up to 23% on average. Improvement of task-based over static threading ranges from 30 to 49%.
+
+why we didn't use OpenMP?
+-The latest OpenMP 4 supports the task dataflow model with the dependency tracking mechanisms of OmpSs. We choose not to compare to an out-dated OpenMP version that does not support task dependencies and use OmpSs instead that is using the same dataflow mechanisms.
+
+

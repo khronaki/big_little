@@ -1,0 +1,24 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: elsarticle-template-num.aux
+The style file: elsarticle-num.bst
+Database file #1: references.bib
+You're missing a field name---line 729 of file references.bib
+ : 
+ : %  howpublished ={\url{http://events.linuxfoundation.org/sites/events/files/slides/GTS_Anderson.pdf}},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty pages in hetServers
+Warning--empty pages in Pangaea
+Warning--empty pages in Joao:ASPLOS2012
+Warning--empty pages in ARM4HPC_SC13
+Warning--empty pages in Bauer.2012.SC
+Warning--empty booktitle in rollback
+Warning--empty pages in rollback
+Warning--empty pages in Vandierendonck:PACT2011
+Warning--empty pages in Vandierendonck:Hyperq
+Warning--empty journal in Juno
+Warning--empty pages in Zuckerman:EXADAPT2011
+Warning--empty pages in VanCraeynest_fairness
+Warning--empty pages in Hetero95
+Warning--empty pages in Dup09
+Warning--empty pages in LDCP
+(There was 1 error message)

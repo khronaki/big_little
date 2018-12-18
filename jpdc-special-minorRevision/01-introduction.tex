@@ -1,0 +1,201 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \mm{Idea for the Introduction}
+% 
+% Heterogeneous multicores are a reality in the mobile world.
+% 
+% Systems composed of big and little cores can switch from low power to high responding operation modes.
+% 
+% Many researchers are pushing towards building future desktop and HPC systems with mobile chips.
+% 
+% In this paper, we explore the maturity of these platforms for parallel desktop applications, as well as of the programming models used to program them.
+
+%The conventional wisdom in the high-performance computing (HPC) community predicts the power budget of the first exaFLOPS machines to be of a few tens of megawatts~\cite{Kogge_Exascale_TR08}. Should this prediction be correct, the energy efficiency of such machine needs to be around 20-30 times higher than that of the top supercomputers today. This makes energy efficiency, among others such as reliability, storage and networking, one of the main issues for the design of exascale computing technology.
+
+%Using heterogeneous processing elements is one of the approaches to increase energy efficiency. Different types of processors can be specialized for different types of computation, such as the combination of chip-multiprocessors (CMP) and discrete compute-capable graphics processing units (GPUs). Another approach towards heterogeneity is the use of different processors designed targeting different performance and power optimization points, such as the combination of faster and slower cores in a CMP (e.g., ARM big.LITTLE~\cite{Greenhalgh2011}).
+
+
+%Heterogeneity in supercomputing nowadays comes mainly from the use of compute accelerators. Generally, general-purpose chip multiprocessors (CMPs) made out of homogeneous cores are combined together with compute-capable graphics processing units (GPUs) that serve as accelerators for compute-intensive parts of an application. This provides a platform in which some parts of the application will run faster on the CMP, and others on the GPU.
+
+%The STI Cell/B.E.~\cite{IntroCell_IBMRandD05} has been one of the major processors with heterogeneous processing elements on the same chip. It was targeted to the gaming market and its compute capabilities attracted HPC users and vendors. It was substantially adopted in supercomputing and was the most energy efficient HPC technology for some years before being discontinued and becoming obsolete. There are no other recent examples of heterogeneous CMPs used in supercomputing. However, heterogeneous CMPs are mainstream in embedded multimedia and mobile processing. Apart from the processor-accelerator scheme using VLIW/DSP cores~\cite{Viper_IEEEDandT01} or GPUs, some heterogeneous CMPs integrate different types of general-purpose cores~\cite{Greenhalgh2011}. Some works envision the adoption of such mobile technology in HPC for energy efficiency~\cite{ARM4HPC_SC13,Abdurachmanov2013}. In this scenario, a heterogeneous CMP with general-purpose fast and slow cores imposes several challenges regarding scheduling that are different to the current accelerator-based heterogeneous systems. Contrarily to the latter, different parts of an HPC application will constantly run faster on fast cores and slower on slow cores.
+
+%Using heterogeneous processing elements is one of the approaches to increase energy efficiency~\cite{Fedorova2009}. Different types of processors can be specialized for different types of computation, such as the combination of chip-multiprocessors (CMP) and discrete compute-capable graphics processing units (GPUs). Another approach towards heterogeneity is the use of different processors designed targeting different performance and power optimization points, such as the combination of faster and slower cores in a CMP (e.g., ARM big.LITTLE~\cite{Greenhalgh2011}).
+
+% <ISPASS17>
+The future of parallel computing is highly restricted by energy efficiency~\cite{Kogge_Exascale_TR08}. 
+Energy efficiency has become the main challenge for future processor designs, motivating prolific research to face the \emph{power wall}. 
+Using heterogeneous processing elements is one of the approaches to increase energy efficiency~\cite{CompCores,hetServers}. 
+%Different types of processors can be specialized for different types of computation, such as the combination of general-purpose cores with accelerators such as Graphics Processing Units (GPUs). 
+%Another approach towards heterogeneity is the use of asymmetric multi-cores (AMCs).
+%An interesting approach towards energy efficiency is the use of asymmetric multi-core (AMC) systems.
+Asymmetric multi-core (AMC) systems is an interesting case of heterogeneous systems to utilize for energy efficiency.
+These systems maintain different types of cores that support the same instruction-set architecture. 
+The different core types are designed to target different (performance or power) optimization points~\cite{Kumar:ISCA2004,Balakrishnan:ISCA2005,Pangaea}. 
+
+AMCs have been mainly deployed for the mobile market. 
+Mobile processors are also utilized in HPC platforms aiming to energy savings~\cite{ARMV8}.
+Asymmetric mobile SoCs combine low-power simple cores (\emph{little}) with fast out-of-order cores (\emph{big}) to achieve high performance while keeping power dissipation low.
+Another area where AMCs have been successful is the supercomputing market.
+The Sunway TaihuLight supercomputer topped the Top500 list in 2016 using AMCs. 
+In this setup, big cores, that offer support for speculation to exploit Instruction-Level Parallelism (ILP), run the master tasks such as the OS and runtime system.
+Little cores are equipped with wide Single Instruction Multiple Data (SIMD) units and lean pipeline structures for energy efficient execution of compute-intensive code. 
+
+%Previous experiences have shown that load balancing and scheduling are fundamental challenges that must be addressed to effectively exploit all the resources in these platforms~\cite{Suleman:APLOS2009,Fedorova2009,Greenhalgh2011,Joao:ASPLOS2012,Joao:ISCA2013,ARM4HPC_SC13}. 
+Like in other heterogeneous systems, load balancing and scheduling are fundamental challenges that must be addressed to effectively exploit all the resources in AMC platforms~\cite{Suleman:APLOS2009,Fedorova2009,Greenhalgh2011,Joao:ASPLOS2012,Joao:ISCA2013,ARM4HPC_SC13}. 
+Mobile applications rely on multi-programmed workloads to balance the load in the system, while supercomputer applications rely on hand-tuned code to extract maximum performance. 
+However, these approaches are not always suitable for general-purpose parallel applications.
+
+In this paper, we evaluate several execution models on an AMC using the PARSEC benchmark suite~\cite{PARSEC3}. 
+This suite includes parallel applications from multiple domains such as finance, computer vision, physics, image processing and video encoding. 
+We quantify the performance loss of executing the applications \textit{as-is} on all cores in the system. 
+The main challenge on executing these applications on an AMC is to maintain load balance. 
+These applications were originally developed on homogeneous platforms and typically operate by dividing the workload on even units. 
+Executing these equal work units on an asymmetric system is expected to suffer due to load imbalance.
+
+%These applications were developed on homogeneous platforms and are bound to suffer from load imbalance on parallel regions that statically distribute the work evenly across cores without considering their performance disparity.
+
+To overcome this matter, we consider two possible solutions at the OS and runtime levels to exploit AMCs effectively.
+The first solution delegates scheduling to the OS.
+We evaluate the built-in heterogeneity-aware OS scheduler currently used in existing mobile platforms that automatically assigns threads to different core types based on CPU utilization. 
+%This approach does not require modifying the application, but is limited for high-utilization multithreaded applications.
+The main drawback of this approach is the overhead introduced by the thread migration, thus resulting in limited performance no matter the potential of the underlying system.
+
+The second solution is to transfer the responsibility to the runtime system so it dynamically schedules work to different core types based on work progress and core availability. 
+%The advantage is that the runtime system has knowledge of the application structure and parallel work boundaries so it can react with certain level of predictability. 
+We evaluate the impact of using an inherently load-balanced execution model such that of task-based programming models. 
+Recent examples~\cite{Ayguade:TPDS2009, OpenMP4.0:Manual2013, OmpSs_PPL11, vectorMulticore, Bauer.2012.SC,rollback,Vandierendonck:PACT2011, Vandierendonck:Hyperq,spawn} include clauses to specify inter-task dependencies and remove most barriers which are the major source of load imbalance on AMCs.
+Another approach of scheduling in the runtime system is to change the existing statically-scheduled work-sharing constructs for the applications implemented in OpenMP to use dynamic scheduling. 
+
+This paper provides the first to our knowledge comprehensive evaluation of representative parallel applications on a real AMC platform: the Odroid-XU3 development board with ARM big.LITTLE architecture.
+We analyze the effectiveness of the aforementioned scheduling solutions in terms of performance, power and energy.
+We show why parallel applications are not ready to run on AMCs and how OS and runtime schedulers can overcome these issues depending on the application characteristics.
+Further we point out in which aspects the built-in OS scheduler falls short to effectively utilize the AMC.
+Finally, we show how the runtime system approach overcomes these issues, and improves the OS and static threading approaches by 13\% and 23\% respectively.
+
+%that the commonly used OS scheduler for AMCs 
+%how a runtime-based approach outperforms a commercially available product 
+
+% the effectiveness of these solutions at different levels of the software stack with a comprehensive evaluation of representative parallel applications on a real AMC platform: the Odroid-XU3 development board. 
+%This platform features an eight-core Samsung Exynos 5422 chip with ARM big.LITTLE architecture with four out-of-order Cortex-A15 and four in-order Cortex-A7 cores.
+
+The rest of this document is organized as follows: Section~\ref{sec:background} describes the evaluated AMC processor, while Section~\ref{sec:scheduling} provides information on 
+scheduling at the OS and runtime system levels. 
+Section~\ref{sec:experimental} describes the experimental framework. 
+Section~\ref{sec:evaluation} shows the performance and energy results and associated insights.% of our experiments. 
+Finally, Section~\ref{sec:related} discusses related work and Section~\ref{sec:conclusions} concludes this work. 
+
+\iffalse
+% <PACT16>
+
+The future of parallel computing is highly restricted by energy 
+efficiency~\cite{Kogge_Exascale_TR08}. Energy efficiency has become the main 
+challenge for future processor designs, motivating prolific research to face the 
+\emph{power wall}. Using heterogeneous processing elements is one of the 
+approaches to increase energy efficiency. Different types of processors can 
+be specialized for different types of computation, such as the combination of 
+general-purpose cores with accelerators such as Graphics Processing Units (GPUs). 
+Another approach towards heterogeneity is the use of asymmetric multi-cores 
+with different types of cores with the same instruction-set architecture. Different core types 
+target different performance and power optimization points for energy
+efficiency~\cite{Kumar:ISCA2004,Balakrishnan:ISCA2005}. 
+
+Asymmetric multi-cores have been successfully deployed in the mobile market, where 
+low-power simple cores (\emph{little}) are combined with 
+high-performance out-of-order cores (\emph{big}). Low demand applications
+run on little cores for low power operation and prolong battery life. Demanding
+applications, such as games, run on the big cores providing high performance
+when needed.
+
+Supercomputing is another market where asymmetric multi-cores have been successful. 
+The Sunway TaihuLight supercomputer topped the Top500 list in 2016 using asymmetric multi-cores. 
+In this setup, big cores, that offer support for speculation and Instruction-Level Parallelism (ILP), run the master tasks such as the OS and runtime system.
+%system, as these tasks require support for speculation and Instruction-Level Parallelism (ILP) 
+%exploitation of codes with complex control flow.
+Little cores are equipped with wide Single Instruction Multiple Data (SIMD) units and lean pipeline structures for energy efficient execution of compute-intensive codes. 
+
+Previous experiences have shown that load balancing and scheduling are fundamental challenges that 
+must be addressed to effectively exploit all the resources in these 
+platforms~\cite{Suleman:APLOS2009,Fedorova2009,Greenhalgh2011,Joao:ASPLOS2012,Joao:ISCA2013,
+ARM4HPC_SC13}. 
+Mobile applications rely on multi-programmed workloads to balance the load in the 
+system, while supercomputer applications rely on hand-tuned code to extract maximum 
+performance. However, these approaches are not always suitable for general-purpose parallel 
+applications.
+%In a first generation of asymmetric multi-cores, the system could switch from low power to high responding operation modes, activating or de-activating the cluster of big or little cores accordingly~\cite{ARM}. In a second generation of asymmetric multi-core processors, all the cores can run simultaneously to further improve the peak performance of these systems~\cite{samsung}.
+
+%Many researchers are pushing towards building future parallel systems with asymmetric multi-cores~\cite{Suleman:APLOS2009,Fedorova2009, Greenhalgh2011, Joao:ASPLOS2012,Joao:ISCA2013} and even mobile chips~\cite{ARM4HPC_SC13}. However, it is unclear if current parallel applications will benefit from these asymmetric platforms. Load balancing and scheduling are two of the main challenges in utilizing such heterogeneous platforms, as the programmer has to consider them from the very beginning to obtain an efficient parallelization.
+
+%In this paper, we evaluate for the first time the suitability of currently available mobile asymmetric multi-core platforms for general purpose computing. First, we demonstrate that out-of-the-box parallel applications do not run efficiently on asymmetric multi-cores. Fully exploiting the computational power of these processors is challenging as the asymmetry in the system can lead to load imbalance, undermining the scalability of the parallel application. Consequently, only applications that incorporate user-defined load balancing mechanisms can benefit immediately from asymmetric multi-cores.
+
+In this paper, we evaluate several execution models on an asymmetric multi-core
+using the PARSEC benchmark suite. This suite includes parallel applications from multiple domains 
+such as finance, computer vision, physics, image processing and video encoding. We first quantify 
+the performance loss of executing the applications \textit{as-is} on all cores 
+in the system. These applications were developed on homogeneous platforms and are bound to suffer from
+load imbalance on parallel regions that statically distribute the work
+evenly across cores without considering their performance disparity.
+
+Then, we evaluate several solutions at the OS and runtime level that require different
+levels of user intervention to exploit asymmetric multi-cores effectively. The first
+solution delegates scheduling to the OS. We evaluate the heterogeneity-aware
+OS scheduler used in existing mobile platforms that assigns threads to different
+core types based on CPU utilization. This requires no modification of the
+application, but has limited capability for high-utilization multithreaded applications.
+
+%on an ARM big.LITTLE asymmetric multi-core platform 
+
+%When load-balancing techniques are not included in the original application, we evaluate alternative solutions that, without relying on the programmer, can leverage the opportunities that asymmetric systems offer. In particular, we evaluate a state of the art dynamic scheduler at the Operating System (OS) level that is aware of the characteristics of each core type. This scheduler effectively exploits the system by running high CPU utilization processes on the big cores and low CPU utilization processes on the little cores.
+
+The second solution is to transfer the responsibility to the runtime system so it 
+dynamically schedules work to different core types based on work progress and core 
+availability. The advantage is that the runtime system has knowledge of the application 
+structure and parallel work boundaries so it can react with certain level of predictability. 
+We evaluate dynamic scheduling on top of the existing work-sharing constructs in the applications 
+with an OpenMP statically-scheduled implementation available. This requires code transformations 
+that are straightforward in many cases.
+
+Finally, we evaluate the impact of using an inherently load-balanced execution model such 
+that of task-based programming models. 
+Recent examples~\cite{Ayguade:TPDS2009, OpenMP4.0:Manual2013, OmpSs_PPL11, Zuckerman:EXADAPT2011, Bauer.2012.SC, Vandierendonck:PACT2011, Vandierendonck:Hyperq} 
+include clauses to specify inter-task dependences and remove most barriers which are the major 
+source of load imbalance on asymmetric multi-cores.
+
+%and let the runtime system to track dependences between tasks. When these dependences are satisfied, tasks are dynamically scheduled, effectively balancing the workload.
+
+This paper quantifies the effectiveness of these solutions at different levels of the software stack
+with a comprehensive evaluation of representative parallel applications on a real 
+asymmetric multi-core platform: the Odroid-XU3 development board. This platform features an 
+eight-core Samsung Exynos 5422 chip with ARM big.LITTLE architecture with 
+four out-of-order Cortex-A15 and four in-order Cortex-A7 cores.
+
+The rest of this document is organized as follows: Section~\ref{sec:background} describes the 
+evaluated asymmetric multi-core processor, while Section~\ref{sec:scheduling} offers information on 
+dynamic schedulers at the OS and runtime system levels. Section~\ref{sec:experimental} 
+describes the experimental framework. Section~\ref{sec:evaluation} shows the performance 
+and energy results and associated insights of our experiments. Finally, 
+Section~\ref{sec:related} discusses related work and Section~\ref{sec:conclusions} concludes 
+this work. 
+\fi
+%\begin{itemize}
+% \item Out-of-the-box applications obtain the best average performance when running only on the aggressive out-of-order cores. Many of these applications are not ready to fully exploit asymmetric multi-cores as they suffer from load imbalance due to the system's heterogeneity. As a result, an average 12\% performance degradation is obtained when using all the cores in the system instead of the four out-of-order cores. 
+% \item For the OS scheduler it takes three additional little cores on average to reach the performance obtained with four out-of-order cores. This is observed in most evaluated applications; the addition of little cores to a homogeneous big-core system is degrading performance. Specifically, this slowdown is observed to be 22\% on average when one little core is added to a system that consists of four big cores.
+%% applications have 22\% better performance on four big cores compared to their performance on a system with four big and one little cores. 
+%When adding four little cores the OS scheduler reduces total execution time by 5.3\% but contrarily to this, it is shown how the runtime system scheduling constantly improves performance by up to 16\%.
+%  
+%% \item Dynamic scheduling techniques at OS level can turn the tables, reducing the total execution time by 5.3\% when adding four little cores to a system with four big cores. The dynamic scheduler in the runtime system can further improve the final performance by fully utilizing all the resources in the system. This approach reaches an average 13\% speedup, and leads to the most energy efficient solution, as the Energy-Delay Product (EDP) is reduced by 40\% in this configuration.
+% \item Moreover, the energy delay product (EDP) results show that the optimal solution taking into account both energy and performance remains the runtime system scheduling.
+%%  In systems with a given number of out-of-order cores, adding extra in-order cores can further boost the performance of the application with the appropriate software support (at the application, runtime or OS level). As a result, the energy consumption of parallel applications running on those systems can be reduced by XXX\% on a system with four in-order and four out-of-order cores.
+% \item Finally, we evaluate the usefulness of little cores to off-load runtime system activities. Similarly to the assistant core in the IBM Blue Gene Q and the Fujitsu SPARC64 XIfx processors~\cite{BG-Q:HotChips2011, Fujitsu:HotChips2014}, we explore the possibilities of devoting a little or big core to the runtime system activity. In general, we observe that the noise introduced by the runtime system does not degrade the performance of the parallel application. Thus, we can make use of this assistant core to also run user tasks, increasing the final performance of the system.
+%\end{itemize}
+
+
+% </PACT16>
+
+% We describe a set of configurations for our scheduler regarding the work stealing capabilities of the different core types and the flexibility to define a task as critical or non-critical. 
+ 
+% We implement this scheduler in OmpSs and evaluate its effectiveness on different numbers of cores and shares of fast and slow cores on a real system. 
+ 
+% We also evaluate the effectiveness of our scheduler depending on the speed ratio between fast and slow cores using simulation.  The results show that the effectiveness of our scheduler increases with larger numbers of fast cores over slow cores, and with larger differences of performance between fast and slow cores.
+
+%Finally, we provide a set of recommendations on how to configure our scheduler to get the best results depending on the target system size and configuration.

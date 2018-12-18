@@ -1,0 +1,91 @@
+Asymmetric multi-cores (AMCs) are a successful architectural solution for both mobile devices and supercomputers.
+By maintaining two types of cores (fast and slow) AMCs are able to provide high performance under the facility power budget.
+This paper performs the first extensive evaluation of how portable are the current HPC applications for such supercomputing systems.
+Specifically we evaluate several execution models on an ARM big.LITTLE AMC using the PARSEC benchnark suite that includes representative highly parallel applications.
+We compare schedulers at the user, OS and runtime levels, using both static and dynamic options and multiple configurations, and assess the impact of these options on the well-known problem of balancing the load across AMCs.
+Our results demonstrate that scheduling is more effective when it takes place in the runtime system level as it improves the baseline by 23\%, while the heterogeneous-aware OS scheduling solution improves the baseline by 10\%.
+
+
+%Asymmetric multi-cores (AMCs) are a successful architectural solution for the mobile market. 
+%They provide low power operation with a set of simple  cores and have a set of high-performance cores for more demanding applications. % such as games. 
+%%Both core types share the same instruction-set architecture so threads can migrate across core types without code transformations. 
+%%This design enables long battery life through energy efficiency and high performance when needed. 
+%Due to their energy efficiency, AMCs have also been successful in supercomputing where they provide high performance under the facility power budget. 
+%%However, little work has been done on evaluating how to program and exploit asymmetric multi-cores in such domains. 
+%In this paper, we evaluate several execution models on an ARM big.LITTLE AMC platform using the PARSEC benchmark suite that includes representative highly parallel applications. 
+%We compare schedulers at the user, OS and runtime levels, using both static and dynamic options and multiple configurations. 
+%We assess the impact of these scheduling options on the well-known problem of balancing the load across asymmetric multi-cores and conclude that scheduling is more effective when it takes place in the runtime system level.
+%%the runtime system is the best entity in the software stack to make scheduling decisions on such environment. 
+%%In our experiments on an asymmetric multi-core, using these multi-threaded applications \textit{as-is} on all cores degrades performance compared to just using the big cores in the system.  
+%Our results demonstrate that runtime system scheduling provides 23\% performance uplift over the baseline, while the heterogeneous-aware OS scheduler improves the baseline by 10\%.
+%
+%%Contrarily, the heterogeneous-aware OS scheduler and dynamic runtime schedulers provide a 10\% and 23\% performance uplift despite the overheads incurred managing parallel work.
+
+% <PACT16>
+
+%The prevalence of mobile heterogeneous Systems on Chip (SoC) architectures and the appealing energy efficiency they offer qualify them as an option to design low-power general purpose multi-cores. Recent systems implementing an asymmetric multi-core have been deployed in the mobile domain, putting together different types of processing cores (e.g. out-of-order and in-order) that share the same instruction set architecture. Although there is a solid body of work targeting the exploitation of asymmetric multi-cores, a comprehensive characterization of such a real platform is missing in the literature. %, as well as an overall evaluation of their performance and energy efficiency.
+
+%This paper fills this gap by evaluating emerging parallel applications on such an asymmetric multi-core. We make use of the PARSEC benchmark suite and a processor that implements the ARM big.LITTLE architecture combining four in-order (\emph{little}) and four out-of-order (\emph{big}) cores. We conclude that these applications are not mature enough to run on such systems, as they suffer from load imbalance. 
+% Only applications with user-defined load balancing techniques benefit from this energy-efficient processor.
+
+%To solve this problem, we consider two different dynamic schedulers that alleviate the load imbalance problem. First, a state-of-the-art operating system (OS) scheduler that is aware of the underlying asymmetric multi-core. Second, a novel runtime system of the parallel application that dynamically schedules tasks. As a result, the average performance degradation of 12\% with the out-of-the-box applications is turned into average speedups of 5.3\% and 13\% with the OS and the runtime approach, respectively. These experiments highlight the importance of having the adequate system software stack to successfully exploit future asymmetric multi-cores.
+
+% </PACT16>
+
+% %The success of the state of the art heterogeneous multi-core architectures has pushed many researchers towards energy efficient asymmetric HPC systems built out of mobile processors.
+% %However, there is still work to be done since these architectures have not yet been extensively evaluated under HPC circumstances. 
+% \kc{new abstract start}
+% 
+% The success of the mobile heterogeneous chips (SoCs) in terms of performance and energy savings has engaged many researchers of the high performance computing to use them to approach the power wall.
+% 
+% These chips put together different types of processing cores (e.g. out-of-order and in-order) that share the same instruction set architecture.
+% 
+% There exists a large amount of work that explores optimal solutions for the utilization of these SoCs.
+% 
+% However, the available works lack of a comprehensive characterisation of these platforms as well as an overall evaluation of performance power and energy.
+% This paper presents the evaluation of the PARSEC benchmark suite on such a heterogeneous multicore chip. 
+% We make use of a SoC that implements the ARM big.LITTLE architecture and combines four in-order (\emph{little}) and four out-of-order (\emph{big}) cores. 
+% 
+% Moreover in this work we examine three scheduling approaches each of them taking place in a different level.
+% First is the \emph{Static threading} approach where the scheduling of the threads is specified in application-level by the programmer, second is the \emph{GTS} that is driven by the operating system and is aware of the underlying system and finally the \emph{Task-based} approach that relies on the runtime system to dynamically schedule tasks on the system.
+% 
+% Our results show that the most appropriate ...
+% 
+% \kc{wrote up to here}
+% The power consumption levels of current multicore architectures have boosted the interest towards heterogeneous designs, i. e., towards combining different kinds of cores and adding on-chip accelerators. 
+% 
+% The improvements that mobile processor technology is experimenting, which are driven by the enormous market they target, 
+% also push towards considering asymmetric designs that combine fast out-of-order cores with simple in-order low-power cores for general purpose computing.
+% 
+% %This paper presents a broad evaluation of nine parallel desktop applications from the PARSEC benchmark suite on the ARM big.LITTLE processor architecture. 
+% This paper presents a comparison between three parallel paradigms aimed at fully using mobile heterogeneous architectures: One is based in a static thread allocation specified by the programmer, another is a thread allocation policy driven by the operating system that moves parallel threads across the heterogeneous platform and the third is a runtime system software specifically designed to optimally schedule tasks around multi-core designs.
+% We use nine parallel desktop applications from the PARSEC benchmark suite on an ARM big.LITTLE processor architecture to carry out our experimental campaigns.
+% %We compare three major scheduling techniques in terms of their performance and energy consumption trade-off: static scheduling, operating system scheduling and runtime scheduling.
+% Our evaluation shows that even though the runtime system paradigm spends more power, the increased performance that it offers is enough to provide improvements of XXXXX in terms of Energy Delay Product (EDP).
+% Furthermore, we explore the potential of the little cores and the circumstances that the addition of such cores to the systems helps on improving performance and energy efficiency, showing that only a runtime system based approach is flexible enough to fully use heterogeneous architectures.
+% 
+% 
+% 
+% \iffalse
+% This evaluation is based on nine applications of the PARSEC Benchmark Suite.
+% 
+% 
+% We use nine desktop applications from the PARSEC Benchmark Suite
+% 
+% 
+% 
+% 
+% 
+% Heterogeneous multicores are a reality in the mobile world.
+% 
+% Systems composed of big and little cores can switch from low power to high responding operation modes.
+% 
+% Many researchers are pushing towards building future desktop and HPC systems with mobile chips.
+% 
+% In this paper, we explore the maturity of these platforms for parallel desktop applications, as well as of the programming models used to program them. 
+% 
+% With the help of dynamic schedulers at Operating System or runtime level, these platforms can be exploited to reduce energy and execution time by X\% on average.
+% 
+% Finally, we evaluate the ratio of big and little cores for future envisioned heterogeneous systems.
+% 
+% \fi
